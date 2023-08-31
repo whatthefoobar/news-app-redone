@@ -1,0 +1,149 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 40px;
+  color: #333;
+  /* border: 2px solid red; */
+}
+
+.navbar__right {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.navbar__logo {
+  font-size: 27px;
+  padding-right: 10px;
+  border-right: 1px solid #333;
+  padding-right: 10px;
+  margin-right: 10px;
+}
+
+.navbar__burger {
+  display: none;
+}
+
+.navbar__menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 20px;
+}
+
+.navbar__menu li {
+  cursor: pointer;
+  font-size: 20px;
+  text-transform: capitalize;
+}
+
+.navbar__menu li {
+  cursor: pointer;
+  text-transform: capitalize;
+  position: relative; /* Add relative positioning to create the pseudo-element */
+  transition: color 0.3s; /* Add a transition for smoother hover effect */
+}
+
+.navbar__menu li::before {
+  content: "";
+  position: absolute;
+  top: 45%; /* Position the line in the middle of the list item's height */
+  left: -2px;
+  width: 110%;
+  height: 8px; /* Adjust the thickness of the line */
+  background-color: #e0af8e; /* Set the line color to orange */
+  transform: scaleY(0); /* Initially scale the line to 0 height */
+  transform-origin: center top; /* Set the transform origin to the top center */
+  transition: transform 0.3s; /* Add a transition for smoother hover effect */
+  z-index: -1; /* Place the line behind the text */
+}
+
+.navbar__menu li:hover::before {
+  transform: scaleY(1); /* Expand the line to full height on hover */
+}
+
+.navbar__contact {
+  padding: 7px 16px;
+  border: 1px solid black;
+  color: black;
+  cursor: pointer;
+  font-size: 16px;
+  box-shadow: 6px 6px 0px 0px #000;
+  transition: box-shadow 0.3s, background-color 0.3s;
+}
+
+.navbar__contact:active {
+  background-color: #e0af8e;
+}
+.navbar__contact:not(:active) {
+  transition: background-color 0.3s 0.3s; /* Delay the background-color transition */
+}
+
+.navbar__contact:hover {
+  box-shadow: none; /* Remove the box shadow on hover */
+}
+
+/* Media query for small screens */
+@media (max-width: 750px) {
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    color: #333;
+  }
+
+  .navbar__menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: none; /* Hide the menu by default on small screens */
+    flex-direction: column; /* Stack menu items vertically */
+    align-items: center; /* Center items horizontally */
+    position: absolute; /* Position the menu absolutely */
+    top: 60px; /* Adjust the top position as needed */
+    left: 0;
+    width: 100%; /* Make the menu full width */
+  }
+
+  /* Hamburger icon styles */
+  .navbar__burger {
+    display: block;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 10px;
+  }
+
+  .bar {
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+    margin: 4px 0;
+    transition: 0.4s;
+  }
+
+  .navbar__burger.open .bar:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+  }
+
+  .navbar__burger.open .bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .navbar__burger.open .bar:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+  }
+  .navbar__menu.active {
+    display: flex; /* Show the menu when active (toggled) */
+  }
+
+  .navbar__menu li {
+    cursor: pointer;
+    text-transform: capitalize;
+    font-size: 20px;
+    padding: 10px 0; /* Adjust vertical spacing */
+  }
+}

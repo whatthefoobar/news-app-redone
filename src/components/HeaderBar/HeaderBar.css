@@ -44,6 +44,9 @@
   padding-right: 3px;
   border-right: 1px solid #333;
 }
+.headerbar__list li:hover {
+  color: #e0af8e;
+}
 
 /* Style the search icon (you may need to include a font icon library) */
 .fa-search {

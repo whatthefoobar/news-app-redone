@@ -37,6 +37,7 @@
   cursor: pointer;
   font-size: 20px;
   text-transform: capitalize;
+  color: #5b5758;
 }
 
 .navbar__menu li {
@@ -62,6 +63,10 @@
 
 .navbar__menu li:hover::before {
   transform: scaleY(1); /* Expand the line to full height on hover */
+}
+
+.navbar__menu li:hover {
+  color: #000;
 }
 
 .navbar__contact {

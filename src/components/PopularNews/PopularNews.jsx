@@ -14,11 +14,13 @@ const PopularNews = () => {
           author={author}
           news={news1}
           title={"Eskimos began to build hut"}
+          imageDirection={"left"}
         />
         <SinglePopularNews
           author={author}
           news={news2}
           title={"Ozone layer was repaired"}
+          imageDirection={"right"}
         />
       </div>
 

@@ -5,6 +5,10 @@
   font-weight: bold;
   font-size: 1.6rem;
 }
+.hotNews .container {
+  display: flex;
+  flex-direction: row;
+}
 
 @media screen and (max-width: 700px) {
   .hotNews {

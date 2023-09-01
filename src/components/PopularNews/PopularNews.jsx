@@ -8,6 +8,7 @@ import news4 from "../../assets/images/news4.jpg";
 import news5 from "../../assets/images/news5.jpg";
 import news6 from "../../assets/images/news6.jpg";
 import Pagination from "../Pagination/Pagination";
+import "./PopularNews.css";
 
 const PopularNews = () => {
   // Sample news data
@@ -77,14 +78,13 @@ const PopularNews = () => {
             imageDirection={item.imageDirection}
           />
         ))}
+        {/* Pagination component */}
+        <Pagination
+          currentPage={currentPage}
+          totalPages={Math.ceil(data.news.length / itemsPerPage)}
+          onPageChange={paginate}
+        />
       </div>
-
-      {/* Pagination component */}
-      <Pagination
-        currentPage={currentPage}
-        totalPages={Math.ceil(data.news.length / itemsPerPage)}
-        onPageChange={paginate}
-      />
     </div>
   );
 };

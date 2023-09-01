@@ -6,3 +6,8 @@
 body {
   background-color: #e8dcb8;
 }
+
+.news {
+  display: flex;
+  flex-wrap: wrap;
+}

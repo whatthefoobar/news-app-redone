@@ -1,6 +1,5 @@
 import React from "react";
 import "./HeaderBar.css";
-// import { FiSearch } from "react-icons/fi";
 import { BiSearch } from "react-icons/bi";
 
 const HeaderBar = () => {
@@ -10,7 +9,7 @@ const HeaderBar = () => {
         <button>
           <BiSearch />
         </button>
-        <input type="text" placeholder="Search..." />
+        <input type="text" placeholder="SEARCH..." />
       </div>
       <ul className="headerbar__list">
         <li>Academic</li>

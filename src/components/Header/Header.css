@@ -4,9 +4,19 @@
   justify-content: center;
   align-items: center;
   font-size: 1.6rem;
-  font-weight: 600;
+
   padding: 30px 0;
   position: relative; /* Add this to make positioning the pseudo-elements easier */
+  text-transform: uppercase;
+}
+.header .hue {
+  background-color: rgba(
+    224,
+    175,
+    143,
+    70%
+  ); /* Set the background color to orange */
+  padding: 0 5px;
 }
 
 .header::before,

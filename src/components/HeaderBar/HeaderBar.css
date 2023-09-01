@@ -1,0 +1,49 @@
+.headerbar {
+  color: #333; /* Text color for the entire navigation bar */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+.headerbar__searchbar {
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.headerbar__searchbar input[type="text"] {
+  border: none;
+  outline: none;
+  background: transparent;
+  margin-right: 10px;
+  padding-left: 10px;
+  text-transform: uppercase;
+}
+
+.headerbar__searchbar button {
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.headerbar__list {
+  list-style: none;
+  display: flex;
+  padding: 0;
+}
+
+.headerbar__list li {
+  text-transform: uppercase;
+  margin-right: 10px;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+/* Style the search icon (you may need to include a font icon library) */
+.fa-search {
+  color: #333; /* Color of the search icon */
+  font-size: 1.2rem;
+}

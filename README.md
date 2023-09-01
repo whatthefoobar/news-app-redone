@@ -10,5 +10,6 @@ preview so far
 ![3](https://github.com/whatthefoobar/news-app-redone/assets/69626975/47aefbe0-5d5e-4314-95a8-3aa2d83f2d78)
 
 Ongoing preview and play with the UI:
-![4](https://github.com/whatthefoobar/news-app-redone/assets/69626975/72e34e35-4b95-422c-af1c-2539a879df27)
+
+![4](https://github.com/whatthefoobar/news-app-redone/assets/69626975/198cb7c8-a339-46e6-82ea-9054b177ad2c)
 

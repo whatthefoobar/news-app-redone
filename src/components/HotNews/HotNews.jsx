@@ -6,7 +6,7 @@ import author from "../../assets/images/author.jpg";
 
 const HotNews = () => {
   return (
-    <div>
+    <div className="hotNews">
       <h2>Hot news</h2>
       <SingleHotNews
         newsImage={news3}

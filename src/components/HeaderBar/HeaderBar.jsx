@@ -13,10 +13,10 @@ const HeaderBar = () => {
       </div>
       <ul className="headerbar__list">
         <li>Academic</li>
-        <li>Human & Environment</li>
+        <li>Environment</li>
         <li>sports</li>
         <li>Politics</li>
-        <li>Music</li>
+        <li>Arts</li>
         <li>Finance</li>
         {/* <li>Other</li> */}
       </ul>

@@ -1,13 +1,13 @@
-.singleHotNews__image {
-  flex: 1;
-  max-width: 400px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.hotNews {
+  /* border: 2px solid pink; */
+}
+.hotNews h2 {
+  font-weight: bold;
+  font-size: 1.6rem;
 }
 
-.singleHotNews__image img {
-  max-width: 100%;
-  height: auto;
-  filter: grayscale(100%);
+@media screen and (max-width: 700px) {
+  .hotNews {
+    width: 100%;
+  }
 }

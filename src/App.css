@@ -10,7 +10,13 @@ body {
 .news {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
   gap: 20px;
+  /* justify-content: space-between; */
   padding: 0 30px;
+}
+
+@media screen and (max-width: 800px) {
+  .news {
+    flex-direction: column; /* Change to a column layout */
+  }
 }

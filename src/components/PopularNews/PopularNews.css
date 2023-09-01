@@ -1,7 +1,20 @@
 .popularNews {
+  padding-right: 20px;
+  border-right: 2px solid #5b5758;
+}
+.container {
+  /* border: 2px solid pink; */
   display: flex;
   flex-direction: column;
   gap: 10px;
-  padding-right: 20px;
-  border-right: 2px solid #5b5758;
+}
+.popularNews h2 {
+  font-weight: bold;
+  font-size: 1.6rem;
+}
+
+@media screen and (max-width: 700px) {
+  .popularNews {
+    width: 100%;
+  }
 }

@@ -7,9 +7,9 @@ import news2 from "../../assets/images/news2.jpeg";
 
 const PopularNews = () => {
   return (
-    <div>
+    <div className="popularNews">
       <h2>Popular News</h2>
-      <div className="popularNews">
+      <div className="container">
         <SinglePopularNews
           author={author}
           news={news1}

@@ -15,7 +15,6 @@ const App = () => {
         <PopularNews />
         <HotNews />
       </div>
-      {/* <Footer /> */}
     </>
   );
 };

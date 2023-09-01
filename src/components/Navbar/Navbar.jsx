@@ -31,7 +31,7 @@ const Navbar = () => {
         <li>Daily News</li>
         <li>Features</li>
       </ul>
-      <button className="navbar__contact">Contact</button>
+      <button className="navbar__contact">Contact us</button>
     </nav>
   );
 };

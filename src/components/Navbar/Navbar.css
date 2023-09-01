@@ -70,12 +70,13 @@
 }
 
 .navbar__contact {
-  padding: 7px 16px;
+  text-transform: capitalize;
+  padding: 5px 18px;
   border: 1px solid black;
   color: black;
   cursor: pointer;
   font-size: 16px;
-  box-shadow: 6px 6px 0px 0px #000;
+  box-shadow: 4px 4px 0px 0px #000;
   transition: box-shadow 0.3s, background-color 0.3s;
 }
 

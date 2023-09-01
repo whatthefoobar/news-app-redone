@@ -10,4 +10,6 @@ body {
 .news {
   display: flex;
   flex-wrap: wrap;
+  gap: 20px;
+  padding: 0 30px;
 }

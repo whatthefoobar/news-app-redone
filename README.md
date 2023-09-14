@@ -11,7 +11,7 @@ Done so far:
 Redoing the design and logic of an old news app project:
 Ongoing preview and play with the UI:
 
-![1](https://github.com/whatthefoobar/news-app-redone/assets/69626975/a3f1e888-7f93-481f-9dbe-0ca25baff330)
+![1](https://github.com/whatthefoobar/news-app-redone/assets/69626975/1ea1a7e5-ec80-4870-9899-893238957647)
 
 ![2](https://github.com/whatthefoobar/news-app-redone/assets/69626975/017358db-844e-4830-b7a6-f44871078b3e)
 

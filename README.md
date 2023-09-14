@@ -1,7 +1,9 @@
 # news-app-redone
+In progress... Come back to see it done.
+
 To Do:
-- finish UI
-- create node backend and store api key
+- finish UI (ongoing, almost done)
+- create node backend and store api key (did template)
 - fetch data from the fontend and fill in all news sections with data from our api
 - publish to render (build the frontend and serve it from the backend, so publish as a web service) <= will this work with api data ?
  

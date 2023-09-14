@@ -7,7 +7,7 @@
 
 .singlePopularNews__image {
   flex: 1;
-  max-width: 400px;
+  max-width: 500px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -38,4 +38,13 @@
   width: 100%;
   height: auto;
   filter: grayscale(100%);
+}
+
+@media screen and (max-width: 900px) {
+  .singlePopularNews {
+    flex-direction: column;
+  }
+  .singlePopularNews__image {
+    max-width: 700px;
+  }
 }

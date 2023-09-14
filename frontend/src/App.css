@@ -14,7 +14,7 @@ body {
   padding: 0 30px;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 900px) {
   .news {
     flex-direction: column; /* Change to a column layout */
   }

@@ -1,7 +1,7 @@
 import React from "react";
 import "./SingleHotNews.css";
 
-const SingleHotNews = ({ newsImage, title, authorImage }) => {
+const SingleHotNews = ({ newsImage, title, newsContent, authorImage }) => {
   return (
     <div className="singleHotNews">
       <div className="singleHotNews__image">
@@ -10,10 +10,7 @@ const SingleHotNews = ({ newsImage, title, authorImage }) => {
       <div className="singleHotNews__content">
         <div className="singleHotNews__content__text">
           <h3>{title}</h3>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit,
-            voluptatem.
-          </p>
+          <p>{newsContent}</p>
         </div>
 
         <div className="singleHotNews__author">

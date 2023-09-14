@@ -27,6 +27,10 @@
   flex-direction: column;
 }
 
+.singleHotNews__content .singleHotNews__content__text h3 {
+  font-size: 1.8rem;
+}
+
 .singleHotNews__author {
   display: flex;
   align-items: center;

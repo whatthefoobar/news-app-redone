@@ -28,8 +28,12 @@
   display: flex;
   flex-direction: column;
 }
+.singlePopularNews__content h3 {
+  font-size: 1.8rem;
+}
 
 .singlePopularNews__author {
+  margin-top: 15px;
   display: flex;
   align-items: center;
 }

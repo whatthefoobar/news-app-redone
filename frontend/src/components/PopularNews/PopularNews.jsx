@@ -18,36 +18,48 @@ const PopularNews = () => {
         author: author,
         news: news1,
         title: "Eskimos began to build hut",
+        newsContent:
+          "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis,atque! Alias consequuntur quas maxime sint quae rem excepturi mollitia nulla?",
         imageDirection: "left",
       },
       {
         author: author,
         news: news2,
         title: "Ozone layer was repaired",
+        newsContent:
+          "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis,atque! Alias consequuntur quas maxime sint quae rem excepturi mollitia nulla?",
         imageDirection: "right",
       },
       {
         author: author,
         news: news4,
         title: "Title3",
+        newsContent:
+          "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis,atque! Alias consequuntur quas maxime sint quae rem excepturi mollitia nulla?",
         imageDirection: "left",
       },
       {
         author: author,
         news: news5,
         title: "Title4",
+        newsContent:
+          "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis,atque! Alias consequuntur quas maxime sint quae rem excepturi mollitia nulla?",
         imageDirection: "right",
       },
       {
         author: author,
         news: news6,
         title: "Title5",
+        newsContent:
+          "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis,atque! Alias consequuntur quas maxime sint quae rem excepturi mollitia nulla?",
         imageDirection: "left",
       },
       {
         author: author,
         news: news2,
         title: "Title6",
+        newsContent:
+          "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis,atque! Alias consequuntur quas maxime sint quae rem excepturi mollitia nulla?",
         imageDirection: "right",
       },
       // Add more news items here
@@ -75,16 +87,17 @@ const PopularNews = () => {
             author={item.author}
             news={item.news}
             title={item.title}
+            newsContent={item.newsContent}
             imageDirection={item.imageDirection}
           />
         ))}
         {/* Pagination component */}
-        <Pagination
-          currentPage={currentPage}
-          totalPages={Math.ceil(data.news.length / itemsPerPage)}
-          onPageChange={paginate}
-        />
       </div>
+      <Pagination
+        currentPage={currentPage}
+        totalPages={Math.ceil(data.news.length / itemsPerPage)}
+        onPageChange={paginate}
+      />
     </div>
   );
 };

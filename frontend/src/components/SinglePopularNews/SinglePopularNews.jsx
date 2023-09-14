@@ -1,7 +1,13 @@
 import React from "react";
 import "./SinglePopularNews.css";
 
-const SinglePopularNews = ({ author, news, title, imageDirection }) => {
+const SinglePopularNews = ({
+  author,
+  news,
+  title,
+  newsContent,
+  imageDirection,
+}) => {
   return imageDirection === "left" ? (
     <div className="singlePopularNews">
       <div className="singlePopularNews__image">
@@ -9,6 +15,7 @@ const SinglePopularNews = ({ author, news, title, imageDirection }) => {
       </div>
       <div className="singlePopularNews__content">
         <h3>{title}</h3>
+        <p>{newsContent}</p>
         <div className="singlePopularNews__author">
           <div className="singlePopularNews__author__image">
             <img src={author} alt="author" />
@@ -24,6 +31,7 @@ const SinglePopularNews = ({ author, news, title, imageDirection }) => {
     <div className="singlePopularNews">
       <div className="singlePopularNews__content">
         <h3>{title}</h3>
+        <p>{newsContent}</p>
         <div className="singlePopularNews__author">
           <div className="singlePopularNews__author__image">
             <img src={author} alt="author" />

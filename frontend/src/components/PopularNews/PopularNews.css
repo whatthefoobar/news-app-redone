@@ -2,7 +2,6 @@
   max-width: 800px;
 }
 .popularNews h2 {
-  padding-left: 10px;
   margin-bottom: 20px;
   font-weight: bold;
   font-size: 1.6rem;
@@ -18,11 +17,14 @@
 @media screen and (max-width: 900px) {
   .popularNews {
     width: 100%;
-    padding-right: 0;
+    border-right: none;
+  }
+  .popularNews .container {
+    border: none;
   }
 }
 @media screen and (min-width: 900px) {
   .popularNews .container {
-    padding-right: 40px;
+    padding-right: 30px;
   }
 }

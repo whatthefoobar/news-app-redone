@@ -11,7 +11,7 @@ body {
   display: flex;
   flex-direction: row;
   gap: 20px;
-  padding: 0 30px;
+  padding: 10px 20px;
 }
 
 @media screen and (max-width: 1000px) {

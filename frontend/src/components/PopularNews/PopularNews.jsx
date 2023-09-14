@@ -92,12 +92,12 @@ const PopularNews = () => {
           />
         ))}
         {/* Pagination component */}
+        <Pagination
+          currentPage={currentPage}
+          totalPages={Math.ceil(data.news.length / itemsPerPage)}
+          onPageChange={paginate}
+        />
       </div>
-      <Pagination
-        currentPage={currentPage}
-        totalPages={Math.ceil(data.news.length / itemsPerPage)}
-        onPageChange={paginate}
-      />
     </div>
   );
 };

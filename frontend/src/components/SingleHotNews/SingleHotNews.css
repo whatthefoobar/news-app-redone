@@ -6,7 +6,7 @@
 
 .singleHotNews__image {
   flex: 1;
-  max-width: 650px;
+  max-width: 450px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -17,6 +17,7 @@
   height: auto;
   filter: grayscale(100%);
 }
+
 .singleHotNews__image img:hover {
   filter: grayscale(0%);
 }
@@ -41,4 +42,10 @@
   width: 100%;
   height: auto;
   filter: grayscale(100%);
+}
+
+@media screen and (max-width: 1000px) {
+  .singleHotNews__image {
+    max-width: 650px;
+  }
 }

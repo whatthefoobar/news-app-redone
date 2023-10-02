@@ -1,22 +1,25 @@
 import express from "express";
 import axios from "axios";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const app = express();
 const port = 5000;
 
-// Define a route for fetching data from the New York Times API
-app.get("/api/data", async (req, res) => {
+const apiKey = process.env.API_KEY; // Replace with your API key
+
+// gets popular news to pupulate left side
+app.get("/api/popular", async (req, res) => {
   try {
     const term = req.params.term; // Replace with your desired search term
-    const apiKey = "your_api_key"; // Replace with your API key
-
     const response = await axios.get(
-      `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${term}&api-key=${apiKey}`
+      `https://api.nytimes.com/svc/mostpopular/v2/shared/1/facebook.json?api-key=${apiKey}`
     );
 
     if (response.status === 200) {
       const data = response.data;
-      res.json(data);
+      res.json(data.results);
     } else {
       res
         .status(response.status)

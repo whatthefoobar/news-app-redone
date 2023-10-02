@@ -3,7 +3,8 @@ import "./SinglePopularNews.css";
 
 const SinglePopularNews = ({
   author,
-  news,
+  imageSrc,
+  imageAlt,
   title,
   newsContent,
   imageDirection,
@@ -11,7 +12,7 @@ const SinglePopularNews = ({
   return imageDirection === "left" ? (
     <div className="singlePopularNews">
       <div className="singlePopularNews__image">
-        <img src={news} alt="news" />
+        <img src={imageSrc} alt={imageAlt} />
       </div>
       <div className="singlePopularNews__content">
         <h3>{title}</h3>

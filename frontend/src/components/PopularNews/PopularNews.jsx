@@ -9,8 +9,12 @@ import news5 from "../../assets/images/news5.jpg";
 import news6 from "../../assets/images/news6.jpg";
 import Pagination from "../Pagination/Pagination";
 import "./PopularNews.css";
+import { useApi } from "../../util/useApi";
 
 const PopularNews = () => {
+  const { data: popularNews, isLoading, isError, error } = useApi();
+  console.log("popularNews:", popularNews);
+
   // Sample news data
   const data = {
     news: [
@@ -81,6 +85,12 @@ const PopularNews = () => {
     <div className="popularNews">
       <h2>Popular News</h2>
       <div className="container">
+        {/* {isLoading ? (
+          <h4>Loading....</h4>
+        ) : (
+          popularNews.map((news) => <p key={news.id}>{news.title}</p>)
+        )} */}
+
         {currentItems.map((item, index) => (
           <SinglePopularNews
             key={index}
@@ -91,7 +101,7 @@ const PopularNews = () => {
             imageDirection={item.imageDirection}
           />
         ))}
-        {/* Pagination component */}
+
         <Pagination
           currentPage={currentPage}
           totalPages={Math.ceil(data.news.length / itemsPerPage)}

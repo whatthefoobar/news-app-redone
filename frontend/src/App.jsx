@@ -13,7 +13,7 @@ const App = () => {
       <HeaderBar />
       <div className="news">
         <PopularNews />
-        <HotNews />
+        {/* <HotNews /> */}
       </div>
     </>
   );

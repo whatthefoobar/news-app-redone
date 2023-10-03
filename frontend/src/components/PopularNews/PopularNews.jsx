@@ -1,93 +1,43 @@
 import React, { useState } from "react";
 import SinglePopularNews from "../SinglePopularNews/SinglePopularNews";
-
 import author from "../../assets/images/author.jpg";
 import news1 from "../../assets/images/news1.jpg";
-import news2 from "../../assets/images/news2.jpeg";
-import news4 from "../../assets/images/news4.jpg";
-import news5 from "../../assets/images/news5.jpg";
-import news6 from "../../assets/images/news6.jpg";
+// import news2 from "../../assets/images/news2.jpeg";
+// import news4 from "../../assets/images/news4.jpg";
+// import news5 from "../../assets/images/news5.jpg";
+// import news6 from "../../assets/images/news6.jpg";
 import Pagination from "../Pagination/Pagination";
 import "./PopularNews.css";
 import { useApi } from "../../util/useApi";
 
 const PopularNews = () => {
-  const { data, isLoading, isError, error } = useApi();
-  console.log("popularNews:", data);
-  // console.log("isError:", isError);
+  const { data: popularNews, isLoading, isError, error } = useApi();
+  console.log("popularNews from api:", popularNews);
 
-  // const filteredPopularNews = popularNews.map((newsItem, index) => ({
-  //   id: newsItem.id || "",
-  //   byline: newsItem.byline || "",
-  //   title: newsItem.title || "",
-  //   abstract: newsItem.abstract || "",
-  //   url: newsItem.url || "",
-  //   imageData: newsItem.media || [],
-  //   imageDirection: index % 2 === 0 ? "left" : "right",
-  // }));
-  // console.log("filteredPopularNews:", filteredPopularNews);
+  const filteredPopularNews = popularNews.map((newsItem, index) => ({
+    id: newsItem.id || "",
+    byline: newsItem.byline || "",
+    title: newsItem.title || "",
+    abstract: newsItem.abstract || "",
+    url: newsItem.url || "",
+    // imageData: newsItem.media[0]["media-metadata"][2].url || "",
+    //cannot filter by this img source to get img url src from api
+    imageDirection: index % 2 === 0 ? "left" : "right",
+  }));
 
-  // Sample news data
-  // const data = {
-  //   news: [
-  //     {
-  //       author: author,
-  //       news: news1,
-  //       title: "Eskimos began to build hut",
-  //       newsContent:
-  //         "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis,atque! Alias consequuntur quas maxime sint quae rem excepturi mollitia nulla?",
-  //       imageDirection: "left",
-  //     },
-  //     {
-  //       author: author,
-  //       news: news2,
-  //       title: "Ozone layer was repaired",
-  //       newsContent:
-  //         "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis,atque! Alias consequuntur quas maxime sint quae rem excepturi mollitia nulla?",
-  //       imageDirection: "right",
-  //     },
-  //     {
-  //       author: author,
-  //       news: news4,
-  //       title: "Title3",
-  //       newsContent:
-  //         "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis,atque! Alias consequuntur quas maxime sint quae rem excepturi mollitia nulla?",
-  //       imageDirection: "left",
-  //     },
-  //     {
-  //       author: author,
-  //       news: news5,
-  //       title: "Title4",
-  //       newsContent:
-  //         "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis,atque! Alias consequuntur quas maxime sint quae rem excepturi mollitia nulla?",
-  //       imageDirection: "right",
-  //     },
-  //     {
-  //       author: author,
-  //       news: news6,
-  //       title: "Title5",
-  //       newsContent:
-  //         "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis,atque! Alias consequuntur quas maxime sint quae rem excepturi mollitia nulla?",
-  //       imageDirection: "left",
-  //     },
-  //     {
-  //       author: author,
-  //       news: news2,
-  //       title: "Title6",
-  //       newsContent:
-  //         "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis,atque! Alias consequuntur quas maxime sint quae rem excepturi mollitia nulla?",
-  //       imageDirection: "right",
-  //     },
-  //     // Add more news items here
-  //   ],
-  // };
+  console.log("filteredPopularNews:", filteredPopularNews);
 
-  // const itemsPerPage = 2; // Number of items per page
-  // const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 2; // Number of items per page
+  const [currentPage, setCurrentPage] = useState(1);
 
-  // const indexOfLastItem = currentPage * itemsPerPage;
-  // const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  // const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = filteredPopularNews.slice(
+    indexOfFirstItem,
+    indexOfLastItem
+  );
+
+  console.log("current items:", currentItems);
 
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -99,29 +49,36 @@ const PopularNews = () => {
       <div className="container">
         {isLoading && <h4>Loading...</h4>}
         {isError && <h4>An error ocurred.</h4>}
-        {data.map((item) => (
+
+        {currentItems.map((item) => (
           <SinglePopularNews
             key={item.id}
             author={item.byline}
-            imageSrc={item.imageData[0]["media-metadata"][1].url}
-            imageAlt={item.imageData[0].caption}
+            autorImg={author}
+            imageSrc={news1}
             title={item.title}
             newsContent={item.abstract}
             imageDirection={item.imageDirection}
           />
         ))}
 
-        {/* <Pagination
+        <Pagination
           currentPage={currentPage}
-          totalPages={Math.ceil(data.length / itemsPerPage)}
+          totalPages={Math.ceil(filteredPopularNews.length / itemsPerPage)}
           onPageChange={paginate}
-        /> */}
+        />
       </div>
     </div>
   );
 };
 
 export default PopularNews;
+
+{
+  /* {data.map((item) => (
+          <p>{item.imageData[0]["media-metadata"][1].url}</p>
+        ))} */
+}
 
 {
   /* {isLoading ? (

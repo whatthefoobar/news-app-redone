@@ -13,7 +13,20 @@ const HotNews = () => {
 
   const [filteredLiveNews, setFilteredLiveNews] = useState<
     IApiResponseObject2[]
-  >([]);
+  >([
+    {
+      author: "",
+      title: "",
+      description: "",
+      url: "",
+      source: "",
+      image: "",
+      category: "",
+      language: "",
+      country: "",
+      published_at: "",
+    },
+  ]);
 
   useEffect(() => {
     if (isLoading) {
@@ -43,8 +56,6 @@ const HotNews = () => {
         url: newsItem.url || "",
       }));
       console.log("filteredLiveNews: ", filteredNews);
-
-      // Update the filteredLiveNews state
       setFilteredLiveNews(filteredNews);
     }
   }, [data, isLoading, isError]);
@@ -59,7 +70,7 @@ const HotNews = () => {
 
   return (
     <div className="hotNews">
-      <h2>Hot news</h2>
+      <h2>Live news</h2>
       <div className="container">
         <SingleHotNews
           newsImage={filteredLiveNews[currentPage - 1].image}
@@ -79,43 +90,3 @@ const HotNews = () => {
 };
 
 export default HotNews;
-
-//  <SingleHotNews
-//    newsImage={data.news[currentPage - 1].newsImage}
-//    title={data.news[currentPage - 1].title}
-//    newsContent={data.news[currentPage - 1].newsContent}
-//    authorImage={data.news[currentPage - 1].authorImage}
-//  />;
-
-// Sample news data
-// const data = {
-//   news: [
-//     {
-//       newsImage: news3,
-//       title: "Amazon in blackout",
-//       newsContent:
-//         "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis,atque! Alias consequuntur quas maxime sint quae rem excepturi mollitia nulla?",
-//       authorImage: author,
-//     },
-//     {
-//       newsImage: news4,
-//       title: "Amazon in blackout",
-//       newsContent:
-//         "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis,atque! Alias consequuntur quas maxime sint quae rem excepturi mollitia nulla?",
-//       authorImage: author,
-//     },
-//     {
-//       newsImage: news5,
-//       title: "Amazon in blackout",
-//       authorImage: author,
-//     },
-//     {
-//       newsImage: news3,
-//       title: "Amazon in blackout",
-//       newsContent:
-//         "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis,atque! Alias consequuntur quas maxime sint quae rem excepturi mollitia nulla?",
-//       authorImage: author,
-//     },
-//     // Add more news items here
-//   ],
-// };

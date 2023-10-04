@@ -26,6 +26,8 @@
 }
 
 .navbar__menu {
+  background-color: #e8dcb8;
+  z-index: 99;
   list-style: none;
   padding: 0;
   margin: 0;

@@ -32,6 +32,7 @@
 .headerbar__list {
   list-style: none;
   display: flex;
+  flex-wrap: wrap;
   padding: 0;
 }
 

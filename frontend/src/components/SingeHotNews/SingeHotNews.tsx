@@ -1,7 +1,18 @@
 import React from "react";
 import "./SingleHotNews.css";
+interface IProps {
+  newsImage: string;
+  title: string;
+  newsContent: string;
+  authorImage: string;
+}
 
-const SingleHotNews = ({ newsImage, title, newsContent, authorImage }) => {
+const SingleHotNews = ({
+  newsImage,
+  title,
+  newsContent,
+  authorImage,
+}: IProps) => {
   return (
     <div className="singleHotNews">
       <div className="singleHotNews__image">

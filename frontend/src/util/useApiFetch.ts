@@ -1,8 +1,12 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 
-const useApiFetch = (url) => {
-  const [data, setData] = useState(null);
+interface IProps {
+  url: string;
+}
+
+const useApiFetch = <T>({ url }: IProps) => {
+  const [data, setData] = useState<T | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
 
@@ -12,10 +16,15 @@ const useApiFetch = (url) => {
       setIsError(false);
 
       try {
-        const response = await axios.get(url);
+        const response: AxiosResponse<T> = await axios.get(url);
         setData(response.data);
       } catch (error) {
-        setIsError(true);
+        if (axios.isAxiosError(error)) {
+          setIsError(true);
+        } else {
+          // or creating a new error
+          throw new Error("different error than axios");
+        }
       }
 
       setIsLoading(false);

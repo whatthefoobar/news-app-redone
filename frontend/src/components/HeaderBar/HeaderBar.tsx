@@ -1,4 +1,3 @@
-import React from "react";
 import "./HeaderBar.css";
 import { BiSearch } from "react-icons/bi";
 
@@ -18,7 +17,6 @@ const HeaderBar = () => {
         <li>Politics</li>
         <li>Arts</li>
         <li>Finance</li>
-        {/* <li>Other</li> */}
       </ul>
     </nav>
   );

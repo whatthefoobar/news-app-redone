@@ -4,13 +4,19 @@ import {
   MdOutlineKeyboardArrowUp,
   MdOutlineKeyboardArrowDown,
 } from "react-icons/md";
+interface IProps {
+  currentPage: number;
+  totalPages: number;
+  onBackClick: () => void;
+  onForwardClick: () => void;
+}
 
 const VerticalPagination = ({
   currentPage,
   totalPages,
   onBackClick,
   onForwardClick,
-}) => {
+}: IProps) => {
   return (
     <div className="vertical-pagination">
       <button onClick={onBackClick} disabled={currentPage === 1}>

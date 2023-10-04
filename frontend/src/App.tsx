@@ -2,6 +2,7 @@ import React from "react";
 import "./App.css";
 import PopularNews from "./components/PopularNews/PopularNews";
 import Layout from "./components/Layout/Layout";
+import HotNews from "./components/HotNews/HotNews";
 
 const App: React.FC = () => {
   return (
@@ -9,7 +10,7 @@ const App: React.FC = () => {
       <Layout>
         <div className="news">
           <PopularNews />
-          {/* <HotNews /> */}
+          <HotNews />
         </div>
       </Layout>
     </>

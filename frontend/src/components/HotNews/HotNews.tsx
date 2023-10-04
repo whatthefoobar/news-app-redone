@@ -1,10 +1,9 @@
-import React, { useState } from "react";
-import author from "../../assets/images/author.jpg";
+import { useState, useEffect } from "react";
 import VerticalPagination from "../VerticalPagination/VerticalPagination";
 import "./HotNews.css";
 import useApiFetch from "../../util/useApiFetch";
 import { IApiResponseObject2 } from "../../types/api";
-import SingleHotNews from "../SingeHotNews/SingeHotNews";
+import SingleHotNews from "../SingleHotNews/SingleHotNews";
 
 const HotNews = () => {
   const { data, isLoading, isError } = useApiFetch<IApiResponseObject2[]>({
@@ -12,20 +11,43 @@ const HotNews = () => {
   });
   console.log("fetched live news", data);
 
-  const filteredLiveNews = data!.map((newsItem, index) => ({
-    author: newsItem.author || "",
-    category: newsItem.category || "",
-    country: newsItem.country || "",
-    description: newsItem.description || "",
-    image: newsItem.image || "",
-    language: newsItem.language || "",
-    published_at: newsItem.published_at || "",
-    source: newsItem.source || "",
-    title: newsItem.title || "",
-    url: newsItem.url || "",
-  }));
+  const [filteredLiveNews, setFilteredLiveNews] = useState<
+    IApiResponseObject2[]
+  >([]);
 
-  console.log("filteredLiveNews: ", filteredLiveNews);
+  useEffect(() => {
+    if (isLoading) {
+      // Handle loading state, e.g., show a loading spinner
+      return;
+    }
+
+    if (isError) {
+      // Handle error state, e.g., display an error message
+      return;
+    }
+
+    if (data) {
+      // Data is available, proceed with rendering or processing
+      console.log("fetched live news", data);
+
+      const filteredNews = data.map((newsItem, index) => ({
+        author: newsItem.author || "",
+        category: newsItem.category || "",
+        country: newsItem.country || "",
+        description: newsItem.description || "",
+        image: newsItem.image || "",
+        language: newsItem.language || "",
+        published_at: newsItem.published_at || "",
+        source: newsItem.source || "",
+        title: newsItem.title || "",
+        url: newsItem.url || "",
+      }));
+      console.log("filteredLiveNews: ", filteredNews);
+
+      // Update the filteredLiveNews state
+      setFilteredLiveNews(filteredNews);
+    }
+  }, [data, isLoading, isError]);
 
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -43,7 +65,6 @@ const HotNews = () => {
           newsImage={filteredLiveNews[currentPage - 1].image}
           title={filteredLiveNews[currentPage - 1].title}
           newsContent={filteredLiveNews[currentPage - 1].description}
-          authorImage={author}
         />
 
         <VerticalPagination

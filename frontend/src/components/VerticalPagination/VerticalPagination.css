@@ -8,6 +8,7 @@
 }
 
 .vertical-pagination button {
+  background-color: transparent;
   color: #333; /* White text color */
   border: 1px solid #333;
   padding: 5px 10px;

@@ -4,15 +4,9 @@ interface IProps {
   newsImage: string;
   title: string;
   newsContent: string;
-  authorImage: string;
 }
 
-const SingleHotNews = ({
-  newsImage,
-  title,
-  newsContent,
-  authorImage,
-}: IProps) => {
+const SingleHotNews = ({ newsImage, title, newsContent }: IProps) => {
   return (
     <div className="singleHotNews">
       <div className="singleHotNews__image">
@@ -25,9 +19,9 @@ const SingleHotNews = ({
         </div>
 
         <div className="singleHotNews__author">
-          <div className="singleHotNews__author__image">
+          {/* <div className="singleHotNews__author__image">
             <img src={authorImage} alt="author" />
-          </div>
+          </div> */}
           <div className="singleHotNews__author__content">
             <h4>Grodrick Vingmarson</h4>
             <p>News Author</p>

@@ -95,18 +95,16 @@ const PopularNews = () => {
         {isLoading && <div>Loading...</div>}
         {isError && <div>Error fetching data from the API.</div>}
 
-        {filteredPopularNews !== null &&
-          filteredPopularNews.length !== 0 &&
-          filteredPopularNews.map((item) => (
-            <SinglePopularNews
-              key={item.id}
-              author={item.byline}
-              imageSrc={item.imageSrc}
-              title={item.title}
-              newsContent={item.abstract}
-              imageDirection={item.imageDirection}
-            />
-          ))}
+        {currentItems.map((item) => (
+          <SinglePopularNews
+            key={item.id}
+            author={item.byline}
+            imageSrc={item.imageSrc}
+            title={item.title}
+            newsContent={item.abstract}
+            imageDirection={item.imageDirection}
+          />
+        ))}
 
         <Pagination
           currentPage={currentPage}

@@ -5,6 +5,7 @@
 }
 
 .pagination button {
+  background-color: transparent;
   color: #333;
   border: none;
   padding: 5px 10px;

@@ -51,6 +51,9 @@ const PopularNews = () => {
             media[0] && media[0]["media-metadata"][2]
               ? media[0]["media-metadata"][2].url
               : "";
+          // Specify the type explicitly for imageDirection
+          const imageDirection: "left" | "right" =
+            index % 2 === 0 ? "left" : "right";
 
           return {
             id: newsItem.id || "",
@@ -59,7 +62,7 @@ const PopularNews = () => {
             abstract: newsItem.abstract || "",
             url: newsItem.url || "",
             imageSrc: imageSrc,
-            imageDirection: index % 2 === 0 ? "left" : "right",
+            imageDirection: imageDirection, // Assign the explicit type
           };
         }
       );

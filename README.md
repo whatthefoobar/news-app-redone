@@ -15,20 +15,13 @@ Ongoing preview and play with the UI:
 
 ![final](https://github.com/whatthefoobar/news-app-redone/assets/69626975/1132a04e-c5c0-4278-947c-8b1cfca6246b)
 
+![2](https://github.com/whatthefoobar/news-app-redone/assets/69626975/a10fad69-14a5-4cc6-83cb-d39293dc022b)
 
-![1](https://github.com/whatthefoobar/news-app-redone/assets/69626975/1ea1a7e5-ec80-4870-9899-893238957647)
+![3](https://github.com/whatthefoobar/news-app-redone/assets/69626975/8e287ea8-02b6-4016-a4d7-4edec3b58738)
 
-![2](https://github.com/whatthefoobar/news-app-redone/assets/69626975/017358db-844e-4830-b7a6-f44871078b3e)
+![4](https://github.com/whatthefoobar/news-app-redone/assets/69626975/3725762f-7ded-4dbd-8a45-75373400501d)
 
-![3](https://github.com/whatthefoobar/news-app-redone/assets/69626975/be0d30b0-ad77-48ad-943b-d147642d1ede)
-
-
-Done so far:
-![1](https://github.com/whatthefoobar/news-app-redone/assets/69626975/b42a068e-878f-415b-9f79-d9dadc7158f2)
-
-![2](https://github.com/whatthefoobar/news-app-redone/assets/69626975/dc9b91c2-c14a-42c0-94ec-3791b5ac671b)
-
-![3](https://github.com/whatthefoobar/news-app-redone/assets/69626975/47aefbe0-5d5e-4314-95a8-3aa2d83f2d78)
+![5](https://github.com/whatthefoobar/news-app-redone/assets/69626975/4b3176ff-e292-48e8-b6ba-66156d21aa47)
 
 
 

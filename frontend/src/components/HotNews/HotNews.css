@@ -1,5 +1,6 @@
 .hotNews {
   /* border: 2px solid pink; */
+  flex: 2;
 }
 .hotNews h2 {
   font-weight: bold;

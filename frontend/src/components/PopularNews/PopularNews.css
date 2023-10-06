@@ -1,5 +1,5 @@
 .popularNews {
-  max-width: 800px;
+  flex: 3;
 }
 .popularNews h2 {
   margin-bottom: 20px;

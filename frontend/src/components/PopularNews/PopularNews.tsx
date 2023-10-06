@@ -42,7 +42,6 @@ const PopularNews = () => {
 
     if (data) {
       // Data is available, proceed with rendering or processing
-      console.log("fetched popular news", data);
 
       const filteredNews = data.map(
         (newsItem: IApiResponseObject, index: number) => {
@@ -66,7 +65,6 @@ const PopularNews = () => {
           };
         }
       );
-      console.log("filtered news", filteredNews);
 
       // Update the filteredPopularNews state
       setFilteredPopularNews(filteredNews);
@@ -86,7 +84,6 @@ const PopularNews = () => {
   const paginate = (pageNumber: number) => {
     setCurrentPage(pageNumber);
   };
-  console.log("current items:", currentItems);
 
   return (
     <div className="popularNews">

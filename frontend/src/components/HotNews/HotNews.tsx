@@ -9,7 +9,6 @@ const HotNews = () => {
   const { data, isLoading, isError } = useApiFetch<IApiResponseObject2[]>({
     url: "/api/live-news",
   });
-  console.log("fetched live news", data);
 
   const [filteredLiveNews, setFilteredLiveNews] = useState<
     IApiResponseObject2[]
@@ -41,7 +40,6 @@ const HotNews = () => {
 
     if (data) {
       // Data is available, proceed with rendering or processing
-      console.log("fetched live news", data);
 
       const filteredNews = data.map((newsItem, index) => ({
         author: newsItem.author || "",
@@ -55,7 +53,7 @@ const HotNews = () => {
         title: newsItem.title || "",
         url: newsItem.url || "",
       }));
-      console.log("filteredLiveNews: ", filteredNews);
+
       setFilteredLiveNews(filteredNews);
     }
   }, [data, isLoading, isError]);

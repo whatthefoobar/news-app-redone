@@ -26,9 +26,6 @@ const SinglePopularNews = ({
         <h3>{title}</h3>
         <p>{newsContent}</p>
         <div className="singlePopularNews__author">
-          {/* <div className="singlePopularNews__author__image">
-            <img src={author} alt="author" />
-          </div> */}
           <div className="singlePopularNews__author__content">
             <h4>Grodrick Vingmarson</h4>
             <p>News Author</p>
@@ -42,9 +39,6 @@ const SinglePopularNews = ({
         <h3>{title}</h3>
         <p>{newsContent}</p>
         <div className="singlePopularNews__author">
-          {/* <div className="singlePopularNews__author__image">
-            <img src={autorImg} alt="author" />
-          </div> */}
           <div className="singlePopularNews__author__content">
             <h4>Grodrick Vingmarson</h4>
             <p>News Author</p>

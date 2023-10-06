@@ -8,7 +8,7 @@
 
 .singlePopularNews__image {
   flex: 1;
-  max-width: 300px;
+  min-width: 300px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -17,10 +17,6 @@
 .singlePopularNews__image img {
   max-width: 100%;
   height: auto;
-  filter: grayscale(100%);
-}
-.singlePopularNews__image img:hover {
-  filter: grayscale(0%);
 }
 
 .singlePopularNews__content {

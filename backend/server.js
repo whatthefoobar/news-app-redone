@@ -23,8 +23,9 @@ app.get("/api/popular", async (req, res) => {
     const response = await axios.get(
       `https://api.nytimes.com/svc/mostpopular/v2/shared/1/facebook.json?api-key=${apiKey}`
     );
+    //api.nytimes.com/svc/search/v2/articlesearch.json?q=election&api-key=yourkey
 
-    if (response.status === 200) {
+    https: if (response.status === 200) {
       const data = response.data;
       const filteredData = response.data.results.map(filterNullProperties);
       res.json(filteredData);
@@ -38,28 +39,48 @@ app.get("/api/popular", async (req, res) => {
     res.status(500).json({ error: "Internal server error" });
   }
 });
-
-//right side section hot books NOT WORKING NOT SURE WHY
-app.get("/api/books", async (req, res) => {
+//search articles route
+app.get("/articlesearch", async (req, res) => {
   try {
-    const response = await axios.get(
-      `https://api.nytimes.com/svc/books/v3/lists/current/overview.json?api-key=${apiKey}` //doesnt work :()
-    );
+    const query = req.query.q;
 
-    if (response.status === 200) {
-      const data = response.data;
-      res.json(data);
-    } else if (response.status !== 200) {
-      throw new Error("Non-OK response from the API");
+    if (!query) {
+      return res.status(400).json({ error: "Query parameter (q) is required" });
     }
 
-    const data = response.data;
+    const response = await fetch(
+      `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${query}&api-key=${apiKey}`
+    );
+    const data = await response.json();
+
     res.json(data);
   } catch (error) {
-    console.error("Error fetching data:", error);
-    res.status(500).json({ error: "An error occurred while fetching data" });
+    console.error("Error:", error);
+    res.status(500).json({ error: "An error occurred" });
   }
 });
+
+//right side section hot books NOT WORKING NOT SURE WHY
+// app.get("/api/books", async (req, res) => {
+//   try {
+//     const response = await axios.get(
+//       `https://api.nytimes.com/svc/books/v3/lists/current/overview.json?api-key=${apiKey}` //doesnt work :()
+//     );
+
+//     if (response.status === 200) {
+//       const data = response.data;
+//       res.json(data);
+//     } else if (response.status !== 200) {
+//       throw new Error("Non-OK response from the API");
+//     }
+
+//     const data = response.data;
+//     res.json(data);
+//   } catch (error) {
+//     console.error("Error fetching data:", error);
+//     res.status(500).json({ error: "An error occurred while fetching data" });
+//   }
+// });
 //Mediastack routes:
 app.get("/api/live-news", async (req, res) => {
   try {

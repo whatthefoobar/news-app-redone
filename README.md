@@ -3,8 +3,16 @@ In progress... Come back to see it done.
 
 To Do:
 - finish UI (ongoing, almost done)
-- create node backend and store api key (did template)
-- fetch data from the fontend and fill in all news sections with data from our api
+- create node backend and store api key (Done)
+- fetch data from the fontend and fill in all news sections with data from our api (Done)
+- fix header lines on fullscreen (too short)
+- create search news functionality
+    - create backend endpoint to fetch from
+    - create page for rendering search results on frontend
+    - enable routes for frontend (react-router-dom)
+- fill in headerbar news cattegory tabs
+    - create api backend endpoint to fetch from (1 for all categories as we pass category in when we call it in frontend)
+    - create page for each headerbar category tab, add it to our frontend router
 - publish to render (build the frontend and serve it from the backend, so publish as a web service) <= will this work with api data ?
  
 Done so far:
@@ -13,19 +21,15 @@ Done so far:
 Redoing the design and logic of an old news app project:
 Ongoing preview and play with the UI:
 
-![1](https://github.com/whatthefoobar/news-app-redone/assets/69626975/1ea1a7e5-ec80-4870-9899-893238957647)
+![final](https://github.com/whatthefoobar/news-app-redone/assets/69626975/1132a04e-c5c0-4278-947c-8b1cfca6246b)
 
-![2](https://github.com/whatthefoobar/news-app-redone/assets/69626975/017358db-844e-4830-b7a6-f44871078b3e)
+![2](https://github.com/whatthefoobar/news-app-redone/assets/69626975/a10fad69-14a5-4cc6-83cb-d39293dc022b)
 
-![3](https://github.com/whatthefoobar/news-app-redone/assets/69626975/be0d30b0-ad77-48ad-943b-d147642d1ede)
+![3](https://github.com/whatthefoobar/news-app-redone/assets/69626975/8e287ea8-02b6-4016-a4d7-4edec3b58738)
 
+![4](https://github.com/whatthefoobar/news-app-redone/assets/69626975/3725762f-7ded-4dbd-8a45-75373400501d)
 
-Done so far:
-![1](https://github.com/whatthefoobar/news-app-redone/assets/69626975/b42a068e-878f-415b-9f79-d9dadc7158f2)
-
-![2](https://github.com/whatthefoobar/news-app-redone/assets/69626975/dc9b91c2-c14a-42c0-94ec-3791b5ac671b)
-
-![3](https://github.com/whatthefoobar/news-app-redone/assets/69626975/47aefbe0-5d5e-4314-95a8-3aa2d83f2d78)
+![5](https://github.com/whatthefoobar/news-app-redone/assets/69626975/4b3176ff-e292-48e8-b6ba-66156d21aa47)
 
 
 

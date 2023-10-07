@@ -4,21 +4,21 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 const HeaderBar = () => {
-  const [keyword, setKeyword] = useState("");
-  const navigate = useNavigate();
+  // const [keyword, setKeyword] = useState("");
+  // const navigate = useNavigate();
 
-  const handleSearch = (e: React.SyntheticEvent) => {
-    if (keyword) {
-      navigate(`/search/${keyword.trim()}`);
-      setKeyword("");
-    } else {
-      navigate("/");
-    }
-  };
+  // const handleSearch = (e: React.SyntheticEvent) => {
+  //   if (keyword) {
+  //     navigate(`/search/${keyword.trim()}`);
+  //     setKeyword("");
+  //   } else {
+  //     navigate("/");
+  //   }
+  // };
 
   return (
     <nav className="headerbar">
-      <form className="headerbar__searchbar" onSubmit={handleSearch}>
+      {/* <form className="headerbar__searchbar" onSubmit={handleSearch}>
         <button type="submit">
           <BiSearch />
         </button>
@@ -28,7 +28,7 @@ const HeaderBar = () => {
           value={keyword}
           onChange={(e) => setKeyword(e.target.value)}
         />
-      </form>
+      </form> */}
       <ul className="headerbar__list">
         <li>Academic</li>
         <li>Environment</li>

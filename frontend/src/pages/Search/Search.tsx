@@ -42,6 +42,7 @@ const Search = () => {
           {/* {searchResults?.response?.docs.map((article) => (
             <li key={article._id}>{article.headline.main}</li>
           ))} */}
+          Search....
         </ul>
       )}
     </div>

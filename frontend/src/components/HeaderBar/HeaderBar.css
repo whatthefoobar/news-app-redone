@@ -2,7 +2,8 @@
   color: #333; /* Text color for the entire navigation bar */
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  /* justify-content: space-between; */
+  justify-content: center;
   align-items: center;
   padding: 10px 20px;
 }

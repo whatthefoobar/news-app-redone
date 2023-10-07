@@ -12,7 +12,7 @@ const Navbar = () => {
 
   return (
     <nav className="navbar">
-      <div className="navbar__logo">Lo.News</div>
+      <div className="navbar__logo">Tn.News</div>
       <button
         className={`navbar__burger ${isMenuVisible ? "open" : ""}`}
         id="navbarBurger"

@@ -62,3 +62,13 @@
     width: 25%; /* Adjust the width of the line as needed */
   }
 }
+
+@media (min-width: 980px) {
+  .header {
+    font-size: 1.8rem;
+  }
+  .header::before,
+  .header::after {
+    width: 35%; /* Adjust the width of the line as needed */
+  }
+}

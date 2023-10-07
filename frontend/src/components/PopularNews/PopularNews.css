@@ -2,6 +2,7 @@
   flex: 3;
 }
 .popularNews h2 {
+  margin-left: 10px;
   margin-bottom: 20px;
   font-weight: bold;
   font-size: 1.6rem;
@@ -9,6 +10,7 @@
 .popularNews .container {
   /* border: 2px solid pink; */
   border-right: 2px solid #5b5758;
+  padding: 10px;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -23,8 +25,8 @@
     border: none;
   }
 }
-@media screen and (min-width: 900px) {
+/* @media screen and (min-width: 900px) {
   .popularNews .container {
     padding-right: 30px;
   }
-}
+} */

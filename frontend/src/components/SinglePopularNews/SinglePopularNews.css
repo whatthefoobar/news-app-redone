@@ -8,7 +8,7 @@
 
 .singlePopularNews__image {
   flex: 1;
-  min-width: 300px;
+  max-width: 300px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -25,13 +25,20 @@
   flex-direction: column;
 }
 .singlePopularNews__content h3 {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
+  margin-bottom: 20px;
 }
+
+/* .singlePopularNews__content p {
+  font-size: 1.3rem;
+} */
 
 .singlePopularNews__author {
   margin-top: 15px;
   display: flex;
   align-items: center;
+}
+.singlePopularNews__author__content {
 }
 
 .singlePopularNews__author__image img {
@@ -45,6 +52,7 @@
   .singlePopularNews {
     flex-direction: column;
   }
+
   .singlePopularNews__image {
     max-width: 600px;
   }

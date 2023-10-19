@@ -1,5 +1,6 @@
 # news-app-redone
 In progress... Come back to see it done.
+Need to rethink my UI. Maybe add Sanity as my CMS and load my data from there.
 
 To Do:
 - finish UI (ongoing, almost done)

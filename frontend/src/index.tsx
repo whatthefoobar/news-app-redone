@@ -16,6 +16,13 @@ const router = createBrowserRouter(
     <Route path="/" element={<App />}>
       <Route index={true} element={<Home />} />
       <Route path="/search/:keyword" element={<Search />} />
+      <Route path="/politics" element={<h1>Politics Page</h1>} />
+      <Route path="/science" element={<h1>Science Page</h1>} />
+      <Route path="/world" element={<h1>WorldPage</h1>} />
+      <Route path="/arts" element={<h1>Arts Page</h1>} />
+      <Route path="/books" element={<h1>Books Page</h1>} />
+      <Route path="/movies" element={<h1>Movies Page</h1>} />
+      <Route path="/business" element={<h1>Business Page</h1>} />
     </Route>
   )
 );

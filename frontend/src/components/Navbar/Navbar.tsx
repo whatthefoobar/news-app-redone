@@ -1,6 +1,6 @@
 import { useState } from "react";
-import "./Navbar.css";
 import { Link } from "react-router-dom";
+import "./Navbar.css";
 
 const Navbar = () => {
   // Initialize state to manage the menu's visibility
@@ -30,14 +30,30 @@ const Navbar = () => {
         className={`navbar__menu ${isMenuVisible ? "active" : ""}`}
         id="navbarMenu"
       >
-        <li>Home</li>
-        <li>Politics</li>
-        <li>Science</li>
-        <li>World</li>
-        <li>Arts</li>
-        <li>Books</li>
-        <li>Movies</li>
-        <li>Business</li>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/politics">Politics</Link>
+        </li>
+        <li>
+          <Link to="/science">Science</Link>
+        </li>
+        <li>
+          <Link to="/world">World</Link>
+        </li>
+        <li>
+          <Link to="/arts">Arts</Link>
+        </li>
+        <li>
+          <Link to="/books">Books</Link>
+        </li>
+        <li>
+          <Link to="/movies">Movies</Link>
+        </li>
+        <li>
+          <Link to="/business">Business</Link>
+        </li>
       </ul>
       <button className="navbar__contact">Contact us</button>
     </nav>

@@ -1,4 +1,4 @@
-.news {
+/* .news {
   display: flex;
   flex-direction: row;
   gap: 20px;
@@ -7,6 +7,6 @@
 
 @media screen and (max-width: 1000px) {
   .news {
-    flex-direction: column; /* Change to a column layout */
+    flex-direction: column; 
   }
-}
+} */

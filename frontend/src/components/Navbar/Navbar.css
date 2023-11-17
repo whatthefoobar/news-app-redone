@@ -41,17 +41,18 @@
   cursor: pointer;
   font-size: 20px;
   text-transform: capitalize;
-  color: #5b5758;
 }
 
-.navbar__menu li {
+.navbar__menu li a {
   cursor: pointer;
   text-transform: capitalize;
+  color: #5b5758;
+  text-decoration: none;
   position: relative; /* Add relative positioning to create the pseudo-element */
   transition: color 0.3s; /* Add a transition for smoother hover effect */
 }
 
-.navbar__menu li::before {
+.navbar__menu li a::before {
   content: "";
   position: absolute;
   top: 45%; /* Position the line in the middle of the list item's height */
@@ -65,11 +66,11 @@
   z-index: -1; /* Place the line behind the text */
 }
 
-.navbar__menu li:hover::before {
+.navbar__menu li a:hover::before {
   transform: scaleY(1); /* Expand the line to full height on hover */
 }
 
-.navbar__menu li:hover {
+.navbar__menu li a:hover {
   color: #000;
 }
 

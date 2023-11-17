@@ -5,12 +5,10 @@ import "./Home.css";
 
 const Home = () => {
   return (
-    <Layout>
-      <div className="news">
-        <PopularNews />
-        <HotNews />
-      </div>
-    </Layout>
+    <div className="news">
+      <PopularNews />
+      <HotNews />
+    </div>
   );
 };
 

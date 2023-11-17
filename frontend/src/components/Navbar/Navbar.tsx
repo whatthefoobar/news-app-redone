@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./Navbar.css";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   // Initialize state to manage the menu's visibility
@@ -12,7 +13,10 @@ const Navbar = () => {
 
   return (
     <nav className="navbar">
-      <div className="navbar__logo">Tn.News</div>
+      <Link to="/" className="navbar__logo">
+        Tn.News
+      </Link>
+
       <button
         className={`navbar__burger ${isMenuVisible ? "open" : ""}`}
         id="navbarBurger"
@@ -27,9 +31,13 @@ const Navbar = () => {
         id="navbarMenu"
       >
         <li>Home</li>
-        <li>Reviews</li>
-        <li>Daily News</li>
-        <li>Features</li>
+        <li>Politics</li>
+        <li>Science</li>
+        <li>World</li>
+        <li>Arts</li>
+        <li>Books</li>
+        <li>Movies</li>
+        <li>Business</li>
       </ul>
       <button className="navbar__contact">Contact us</button>
     </nav>

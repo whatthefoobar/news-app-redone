@@ -1,9 +1,6 @@
 .headerbar {
   color: #333; /* Text color for the entire navigation bar */
   display: flex;
-  flex-wrap: wrap;
-  /* justify-content: space-between; */
-  justify-content: center;
   align-items: center;
   padding: 10px 20px;
 }
@@ -13,6 +10,16 @@
   align-items: center;
   border-radius: 5px;
   padding: 5px;
+}
+
+.headerbar__searchbar input::placeholder {
+  /* Increase the font size of the placeholder */
+  font-size: 16px;
+}
+
+.headerbar__searchbar button {
+  /* Increase the size of the search icon */
+  font-size: 24px;
 }
 
 .headerbar__searchbar input[type="text"] {

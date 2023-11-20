@@ -78,6 +78,7 @@ const PopularNews = () => {
             imageSrc={item.imageSrc}
             title={item.title}
             newsContent={item.abstract}
+            byline={item.byline}
             published_date={item.published_date}
           />
         ))}

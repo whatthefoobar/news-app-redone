@@ -8,6 +8,7 @@ interface IProps {
   imageSrc: string;
   title: string;
   newsContent: string;
+  byline: string;
   published_date: string;
 }
 
@@ -16,6 +17,7 @@ const SinglePopularNews = ({
   imageSrc,
   title,
   newsContent,
+  byline,
   published_date,
 }: IProps) => {
   return (
@@ -31,8 +33,11 @@ const SinglePopularNews = ({
       <div className="singlePopularNews__content">
         <h4>{title}</h4>
         <p>{newsContent}</p>
+
+        <p className="author">{byline}</p>
+
         <Link to={`/news/${id}`}>Read more</Link>
-        {/* <a href="/">Read more</a> */}
+
         <div className="posted-date">
           <p>{published_date}</p>
         </div>

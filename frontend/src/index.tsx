@@ -10,12 +10,16 @@ import {
 } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import Search from "./pages/Search/Search";
+import SingleNewsPage from "./pages/SingleNewsPage/SingleNewsPage";
+import { Provider } from "react-redux";
+import store from "./store";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
       <Route index={true} element={<Home />} />
       <Route path="/search/:keyword" element={<Search />} />
+      <Route path="/news/:newsId" element={<SingleNewsPage />} />
       <Route path="/politics" element={<h1>Politics Page</h1>} />
       <Route path="/science" element={<h1>Science Page</h1>} />
       <Route path="/world" element={<h1>WorldPage</h1>} />
@@ -29,6 +33,8 @@ const router = createBrowserRouter(
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   </React.StrictMode>
 );

@@ -1,7 +1,9 @@
-export interface IApiResponseObject {
+// popular news route
+
+export interface IPopularNews {
   uri: string;
   url: string;
-  id: number | string;
+  id: number;
   asset_id: number;
   source: string;
   published_date: string;
@@ -18,58 +20,28 @@ export interface IApiResponseObject {
   org_facet: string[];
   per_facet: string[];
   geo_facet: string[];
-  media: Media[];
+  media: {
+    type: string;
+    subtype: string;
+    caption: string;
+    copyright: string;
+    approved_for_syndication: number;
+    "media-metadata": {
+      url: string;
+      format: string;
+      height: number;
+      width: number;
+    }[];
+  }[];
   eta_id: number;
 }
 
-//media api response
-export interface IApiResponseObject2 {
-  author: string;
-  title: string;
-  description: string;
-  url: string;
-  source: string;
-  image: string;
-  category: string;
-  language: string;
-  country: string;
-  published_at: string;
-}
-
-export interface Media {
-  type: string;
-  subtype: string;
-  caption: string;
-  copyright: string;
-  approved_for_syndication: number;
-  "media-metadata": MediaMetadata[];
-}
-
-export interface MediaMetadata {
-  url: string;
-  format: string;
-  height: number;
-  width: number;
-}
-
-export interface IPopularNews {
+export interface IFilteredPopularNews {
   id: number | string;
   byline: string;
   title: string;
   abstract: string;
   url: string;
   imageSrc: string;
-  imageDirection: "left" | "right";
+  published_date: string;
 }
-
-export const DummyPopularNews = [
-  {
-    id: "",
-    byline: "",
-    title: "",
-    abstract: "",
-    url: "",
-    imageSrc: "",
-    imageDirection: "left",
-  },
-];

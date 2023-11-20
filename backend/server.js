@@ -8,14 +8,13 @@ dotenv.config();
 const app = express();
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "http://localhost:3000",
   })
 );
 
 const port = 5000;
 
-const apiKey = process.env.API_KEY; // Replace with your API key
-const mediaStackApiKey = process.env.MEDIASTACK_API_KEY;
+const apiKey = process.env.API_KEY;
 
 app.get("/api/popular", async (req, res) => {
   try {
@@ -73,23 +72,6 @@ app.get("/categories/:section", async (req, res) => {
   }
 });
 
-//Mediastack routes:
-app.get("/api/live-news", async (req, res) => {
-  try {
-    const apiUrl = `http://api.mediastack.com/v1/news?access_key=${mediaStackApiKey}`;
-
-    const response = await axios.get(apiUrl);
-    const filteredData = response.data.data.map(filterNullProperties);
-
-    res.json(filteredData);
-  } catch (error) {
-    // Handle any errors that occur during the request
-    console.error("Error fetching data from MediaStack API:", error.message);
-    res
-      .status(500)
-      .json({ error: "An error occurred while fetching data from the API" });
-  }
-});
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });

@@ -1,55 +1,42 @@
 import React from "react";
 import "./SinglePopularNews.css";
+import { Link } from "react-router-dom";
+import news from "../../assets/images/news.jpg";
+
 interface IProps {
-  author: string;
+  id: string | number;
   imageSrc: string;
   title: string;
   newsContent: string;
-  imageDirection: "left" | "right";
+  published_date: string;
 }
 
 const SinglePopularNews = ({
-  author,
+  id,
   imageSrc,
   title,
   newsContent,
-  imageDirection,
+  published_date,
 }: IProps) => {
-  return imageDirection === "left" ? (
+  return (
     <div className="singlePopularNews">
-      {imageSrc && (
-        <div className="singlePopularNews__image">
+      <div className="singlePopularNews__image">
+        {imageSrc.length > 0 ? (
           <img src={imageSrc} alt="news" />
-        </div>
-      )}
+        ) : (
+          <img src={news} alt="news" />
+        )}
+      </div>
+
       <div className="singlePopularNews__content">
-        <h3>{title}</h3>
+        <h4>{title}</h4>
         <p>{newsContent}</p>
-        <div className="singlePopularNews__author">
-          <div className="singlePopularNews__author__content">
-            <h4>Grodrick Vingmarson</h4>
-            <p>News Author</p>
-          </div>
+        <Link to={`/news/${id}`}>Read more</Link>
+        {/* <a href="/">Read more</a> */}
+        <div className="posted-date">
+          <p>{published_date}</p>
         </div>
       </div>
-    </div>
-  ) : (
-    <div className="singlePopularNews">
-      <div className="singlePopularNews__content">
-        <h3>{title}</h3>
-        <p>{newsContent}</p>
-        <div className="singlePopularNews__author">
-          <div className="singlePopularNews__author__content">
-            <h4>Grodrick Vingmarson</h4>
-            <p>News Author</p>
-          </div>
-        </div>
-      </div>
-      {imageSrc !== "" && (
-        <div className="singlePopularNews__image">
-          <img src={imageSrc} alt="news" />
-        </div>
-      )}
     </div>
   );
 };

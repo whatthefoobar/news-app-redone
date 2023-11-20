@@ -1,22 +1,15 @@
 import "./PopularNews.css";
-import useApiFetch from "../../util/useApiFetch";
-import {
-  DummyPopularNews,
-  IApiResponseObject,
-  IPopularNews,
-} from "../../types/api";
+import { IFilteredPopularNews, IPopularNews } from "../../types/api";
 import { useEffect, useState } from "react";
 import SinglePopularNews from "../SinglePopularNews/SinglePopularNews";
 import Pagination from "../Pagination/Pagination";
+import Loader from "../Loader/Loader";
+import { useGetPopularArticlesQuery } from "../../slices/apiSlice";
 
 const PopularNews = () => {
-  const { data, isLoading, isError } = useApiFetch<IApiResponseObject[]>({
-    url: "/api/popular",
-  });
-
   // Define filteredPopularNews state
   const [filteredPopularNews, setFilteredPopularNews] = useState<
-    IPopularNews[]
+    IFilteredPopularNews[]
   >([
     {
       id: 0,
@@ -25,53 +18,39 @@ const PopularNews = () => {
       abstract: "",
       url: "",
       imageSrc: "",
-      imageDirection: "left",
+      published_date: "",
     },
   ]);
+  const { data, isLoading, isError } = useGetPopularArticlesQuery();
 
   useEffect(() => {
-    if (isLoading) {
-      // Handle loading state, e.g., show a loading spinner
-      return;
-    }
-
-    if (isError) {
-      // Handle error state, e.g., display an error message
-      return;
-    }
-
     if (data) {
-      // Data is available, proceed with rendering or processing
+      console.log("data fetched from /api/popular", data);
+      //filter the data obj to only the props we need
+      const filteredNews = data.map((newsItem: IPopularNews, index: number) => {
+        const media = newsItem.media || [];
+        const imageSrc =
+          media[0] && media[0]["media-metadata"][2]
+            ? media[0]["media-metadata"][2].url
+            : "";
 
-      const filteredNews = data.map(
-        (newsItem: IApiResponseObject, index: number) => {
-          const media = newsItem.media || [];
-          const imageSrc =
-            media[0] && media[0]["media-metadata"][2]
-              ? media[0]["media-metadata"][2].url
-              : "";
-          // Specify the type explicitly for imageDirection
-          const imageDirection: "left" | "right" =
-            index % 2 === 0 ? "left" : "right";
-
-          return {
-            id: newsItem.id || "",
-            byline: newsItem.byline || "",
-            title: newsItem.title || "",
-            abstract: newsItem.abstract || "",
-            url: newsItem.url || "",
-            imageSrc: imageSrc,
-            imageDirection: imageDirection, // Assign the explicit type
-          };
-        }
-      );
+        return {
+          id: newsItem.id || "",
+          byline: newsItem.byline || "",
+          title: newsItem.title || "",
+          abstract: newsItem.abstract || "",
+          url: newsItem.url || "",
+          imageSrc: imageSrc,
+          published_date: newsItem.published_date || "",
+        };
+      });
 
       // Update the filteredPopularNews state
       setFilteredPopularNews(filteredNews);
     }
-  }, [data, isLoading, isError]);
+  }, [data]);
 
-  const itemsPerPage = 2; // Number of items per page
+  const itemsPerPage = 3; // Number of items per page
   const [currentPage, setCurrentPage] = useState(1);
 
   const indexOfLastItem = currentPage * itemsPerPage;
@@ -88,32 +67,42 @@ const PopularNews = () => {
   return (
     <div className="popularNews">
       <h2>Popular News</h2>
-      <div className="container">
-        {isLoading && <div>Loading...</div>}
+      <div className="popularNews__container">
+        {isLoading && <Loader />}
         {isError && <div>Error fetching data from the API.</div>}
 
         {currentItems.map((item) => (
           <SinglePopularNews
             key={item.id}
-            author={item.byline}
+            id={item.id}
             imageSrc={item.imageSrc}
             title={item.title}
             newsContent={item.abstract}
-            imageDirection={item.imageDirection}
+            published_date={item.published_date}
           />
         ))}
-
-        <Pagination
-          currentPage={currentPage}
-          totalPages={Math.ceil(filteredPopularNews.length / itemsPerPage)}
-          onPageChange={paginate}
-        />
       </div>
+      <Pagination
+        currentPage={currentPage}
+        totalPages={Math.ceil(filteredPopularNews.length / itemsPerPage)}
+        onPageChange={paginate}
+      />
     </div>
   );
 };
 
 export default PopularNews;
 
-// const { data: popularNews, isLoading, isError, error } = useApi();
-// console.log("popularNews from api:", popularNews);
+// const { data, isLoading, isError } = useApiFetch<IApiResponseObject[]>({
+//   url: "/api/popular",
+// });
+// console.log("popular news:", data);
+
+// const {
+//   data: articles,
+//   isLoading: loading,
+//   isError: error,
+// } = useApiFetch({
+//   url: "/categories/science",
+// });
+// console.log("science:", articles);

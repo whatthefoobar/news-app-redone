@@ -2,6 +2,10 @@
   width: 100%;
   position: relative;
 }
+a {
+  text-decoration: none;
+  color: inherit;
+}
 .singlePopularNews__image img {
   width: 100%;
   height: auto;

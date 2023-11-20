@@ -2,6 +2,7 @@ import React from "react";
 import "./SinglePopularNews.css";
 import { Link } from "react-router-dom";
 import news from "../../assets/images/news.jpg";
+import formatDate from "../../util/formatDate";
 
 interface IProps {
   id: string | number;
@@ -40,7 +41,7 @@ const SinglePopularNews = ({
           <Link to={`/news/${id}`}>Read more</Link>
 
           <div className="posted-date">
-            <p>{published_date}</p>
+            <p>{formatDate(published_date)}</p>
           </div>
         </div>
       </div>

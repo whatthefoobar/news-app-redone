@@ -1,5 +1,5 @@
 import React from "react";
-import "./SinglePopularNews.css";
+import "./SinglePopularNewsCard.css";
 import { Link } from "react-router-dom";
 import news from "../../assets/images/news.jpg";
 import formatDate from "../../util/formatDate";
@@ -13,7 +13,7 @@ interface IProps {
   published_date: string;
 }
 
-const SinglePopularNews = ({
+const SinglePopularNewsCardCard = ({
   id,
   imageSrc,
   title,
@@ -23,8 +23,8 @@ const SinglePopularNews = ({
 }: IProps) => {
   return (
     <Link to={`/news/${id}`}>
-      <div className="singlePopularNews">
-        <div className="singlePopularNews__image">
+      <div className="SinglePopularNewsCard">
+        <div className="SinglePopularNewsCard__image">
           {imageSrc.length > 0 ? (
             <img src={imageSrc} alt="news" />
           ) : (
@@ -32,7 +32,7 @@ const SinglePopularNews = ({
           )}
         </div>
 
-        <div className="singlePopularNews__content">
+        <div className="SinglePopularNewsCard__content">
           <h4>{title}</h4>
           <p>{newsContent}</p>
 
@@ -49,4 +49,4 @@ const SinglePopularNews = ({
   );
 };
 
-export default SinglePopularNews;
+export default SinglePopularNewsCardCard;

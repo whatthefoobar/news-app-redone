@@ -1,10 +1,11 @@
 import "./PopularNews.css";
 import { IFilteredPopularNews, IPopularNews } from "../../types/api";
 import { useEffect, useState } from "react";
-import SinglePopularNews from "../SinglePopularNews/SinglePopularNews";
+
 import Pagination from "../Pagination/Pagination";
 import Loader from "../Loader/Loader";
 import { useGetPopularArticlesQuery } from "../../slices/apiSlice";
+import SinglePopularNewsCardCard from "../SinglePopularNewsCard/SinglePopularNews";
 
 const PopularNews = () => {
   // Define filteredPopularNews state
@@ -72,7 +73,7 @@ const PopularNews = () => {
         {isError && <div>Error fetching data from the API.</div>}
 
         {currentItems.map((item) => (
-          <SinglePopularNews
+          <SinglePopularNewsCardCard
             key={item.id}
             id={item.id}
             imageSrc={item.imageSrc}

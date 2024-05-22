@@ -18,6 +18,7 @@ const apiKey = process.env.API_KEY;
 
 app.get("/api/popular", async (req, res) => {
   try {
+    console.log("fetching data from api in my backend!");
     const response = await axios.get(
       `https://api.nytimes.com/svc/mostpopular/v2/shared/1/facebook.json?api-key=${apiKey}`
     );

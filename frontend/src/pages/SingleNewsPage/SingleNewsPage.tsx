@@ -4,6 +4,7 @@ import "./SingleNewsPage.css";
 import { useNavigate, useParams } from "react-router-dom";
 import { stringToNumber } from "../../util/stringToNumber";
 import { IPopularNews } from "../../types/api";
+import formatDate from "../../util/formatDate";
 
 const SingleNewsPage = () => {
   const [article, setArticle] = useState<IPopularNews | null>(null);
@@ -47,6 +48,10 @@ const SingleNewsPage = () => {
         <img src={imageSrc} alt="News" className="news-image" />
         <h1 className="news-title">{article?.title}</h1>
         <p className="news-text">{article?.abstract}</p>
+        <p className="author">{article?.byline}</p>
+        <p>
+          {article?.published_date ? formatDate(article.published_date) : ""}
+        </p>
       </div>
     </div>
   );

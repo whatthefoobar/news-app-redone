@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { useGetPopularArticlesQuery } from "../../slices/apiSlice";
 import "./SingleNewsPage.css";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { stringToNumber } from "../../util/stringToNumber";
 import { IPopularNews } from "../../types/api";
 
 const SingleNewsPage = () => {
   const [article, setArticle] = useState<IPopularNews | null>(null);
+  const navigate = useNavigate();
   const { newsId: id } = useParams();
   const newsId = stringToNumber(id);
   const { data, isLoading, isError } = useGetPopularArticlesQuery();
@@ -29,11 +30,20 @@ const SingleNewsPage = () => {
     console.log("filtered article:", article);
   }, [data, article]);
 
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
+
+  if (isError) {
+    return <p>Error loading articles.</p>;
+  }
+
   return (
     <div className="news-container">
+      <button className="back-button" onClick={() => navigate("/")}>
+        Back
+      </button>
       <div className="news-card">
-        {/* <h1>News Article</h1>
-        <p>Article ID: {newsId}</p> */}
         <img src={imageSrc} alt="News" className="news-image" />
         <h1 className="news-title">{article?.title}</h1>
         <p className="news-text">{article?.abstract}</p>

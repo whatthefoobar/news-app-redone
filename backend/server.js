@@ -62,9 +62,10 @@ app.get("/articlesearch", async (req, res) => {
 
 app.get("/categories/:section", async (req, res) => {
   const { section } = req.params;
+
   try {
     const response = await axios.get(
-      `https://api.nytimes.com/svc/topstories/v2/${section}.json?api-key=${API_KEY}`
+      `https://api.nytimes.com/svc/topstories/v2/${section}.json?api-key=${apiKey}`
     );
     const topStories = response.data.results; // Assuming the data you need is in the 'results' property
     res.json({ topStories });

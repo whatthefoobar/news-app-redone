@@ -51,9 +51,9 @@ const Navbar = () => {
         <li>
           <Link to="/movies">Movies</Link>
         </li>
-        <li>
+        {/* <li>
           <Link to="/business">Business</Link>
-        </li>
+        </li> */}
       </ul>
       <button className="navbar__contact">Contact us</button>
     </nav>

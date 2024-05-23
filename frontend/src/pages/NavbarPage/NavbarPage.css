@@ -1,0 +1,27 @@
+.navbarpage {
+  padding: 0 30px;
+}
+.navbarpage h2 {
+  margin-left: 10px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  font-size: 1.6rem;
+}
+.navbarpage .navbarpage__container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin: 25px, auto;
+}
+
+@media screen and (max-width: 992px) {
+  .navbarpage .navbarpage__container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .navbarpage .navbarpage__container {
+    grid-template-columns: 1fr;
+  }
+}

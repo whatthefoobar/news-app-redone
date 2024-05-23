@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import Pagination from "../Pagination/Pagination";
 import Loader from "../Loader/Loader";
 import { useGetPopularArticlesQuery } from "../../slices/apiSlice";
-import SinglePopularNewsCardCard from "../SinglePopularNewsCard/SinglePopularNews";
+import NewsCard from "../NewsCard/NewsCard";
 
 const PopularNews = () => {
   // Define filteredPopularNews state
@@ -26,7 +26,7 @@ const PopularNews = () => {
 
   useEffect(() => {
     if (data) {
-      console.log("data fetched from /api/popular", data);
+      // console.log("data fetched from /api/popular", data);
       //filter the data obj to only the props we need
       const filteredNews = data.map((newsItem: IPopularNews, index: number) => {
         const media = newsItem.media || [];
@@ -72,17 +72,19 @@ const PopularNews = () => {
         {isLoading && <Loader />}
         {isError && <div>Error fetching data from the API.</div>}
 
-        {currentItems.map((item) => (
-          <SinglePopularNewsCardCard
-            key={item.id}
-            id={item.id}
-            imageSrc={item.imageSrc}
-            title={item.title}
-            newsContent={item.abstract}
-            byline={item.byline}
-            published_date={item.published_date}
-          />
-        ))}
+        {!isLoading &&
+          data &&
+          currentItems.map((item) => (
+            <NewsCard
+              key={item.id}
+              id={item.id}
+              imageSrc={item.imageSrc}
+              title={item.title}
+              newsContent={item.abstract}
+              byline={item.byline}
+              published_date={item.published_date}
+            />
+          ))}
       </div>
       <Pagination
         currentPage={currentPage}
@@ -94,17 +96,3 @@ const PopularNews = () => {
 };
 
 export default PopularNews;
-
-// const { data, isLoading, isError } = useApiFetch<IApiResponseObject[]>({
-//   url: "/api/popular",
-// });
-// console.log("popular news:", data);
-
-// const {
-//   data: articles,
-//   isLoading: loading,
-//   isError: error,
-// } = useApiFetch({
-//   url: "/categories/science",
-// });
-// console.log("science:", articles);

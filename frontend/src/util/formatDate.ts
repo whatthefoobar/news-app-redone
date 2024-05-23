@@ -22,8 +22,4 @@ const formatDate = (inputDate: string): string => {
   return `${months[monthIndex]} ${day}th ${year}`;
 };
 
-// Example usage:
-const formattedDate = formatDate("2023-11-19 10:01:05");
-console.log(formattedDate); // Output: November 19th 2023
-
 export default formatDate;

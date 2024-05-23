@@ -1,4 +1,4 @@
-.footer {
+/* .footer {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -6,4 +6,28 @@
   font-size: 1.2rem;
   height: 100px;
   background-color: rgba(51, 51, 51, 0.301);
+} */
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: rgba(51, 51, 51, 0.301);
+}
+
+.column {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.column:last-child {
+  margin-right: 0;
+}
+
+.column h4 {
+  margin-bottom: 10px;
+}
+
+.column p {
+  margin: 5px 0;
 }

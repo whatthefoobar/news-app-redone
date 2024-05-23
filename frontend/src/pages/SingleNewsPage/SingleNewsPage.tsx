@@ -41,7 +41,7 @@ const SingleNewsPage = () => {
 
   return (
     <div className="news-container">
-      <button className="back-button" onClick={() => navigate("/")}>
+      <button className="back-button" onClick={() => navigate(-1)}>
         Back
       </button>
       <div className="news-card">

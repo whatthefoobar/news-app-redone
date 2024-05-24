@@ -6,6 +6,7 @@ import Pagination from "../Pagination/Pagination";
 import Loader from "../Loader/Loader";
 import { useGetPopularArticlesQuery } from "../../slices/apiSlice";
 import NewsCard from "../NewsCard/NewsCard";
+import { useNavigate, useParams } from "react-router-dom";
 
 const PopularNews = () => {
   const [filteredPopularNews, setFilteredPopularNews] = useState<
@@ -22,6 +23,8 @@ const PopularNews = () => {
     },
   ]);
   const { data, isLoading, isError } = useGetPopularArticlesQuery();
+  const { page } = useParams<{ page: string }>(); // Reading the page number from the URL
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (data) {
@@ -50,8 +53,8 @@ const PopularNews = () => {
   }, [data]);
 
   const itemsPerPage = 4; // Number of items per page
-  const [currentPage, setCurrentPage] = useState(1);
-
+  // const [currentPage, setCurrentPage] = useState(1);
+  const currentPage = page ? parseInt(page, 10) : 1;
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = filteredPopularNews.slice(
@@ -60,7 +63,8 @@ const PopularNews = () => {
   );
 
   const paginate = (pageNumber: number) => {
-    setCurrentPage(pageNumber);
+    // setCurrentPage(pageNumber);
+    navigate(`/${pageNumber}`);
   };
 
   return (

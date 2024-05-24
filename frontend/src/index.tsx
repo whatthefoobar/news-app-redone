@@ -20,6 +20,7 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
       <Route index={true} element={<Home />} />
+      <Route path="/:page" element={<Home />} />
       <Route path="/search/:keyword" element={<Search />} />
       <Route path="/news/:newsId" element={<SingleNewsPage />} />
       <Route path="/:category" element={<NavbarPage />} />

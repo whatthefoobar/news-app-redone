@@ -5,16 +5,21 @@ import { useNavigate, useParams } from "react-router-dom";
 import { stringToNumber } from "../../util/stringToNumber";
 import { IPopularNews } from "../../types/api";
 import formatDate from "../../util/formatDate";
+import Loader from "../../components/Loader/Loader";
 
 const SingleNewsPage = () => {
   const [article, setArticle] = useState<IPopularNews | null>(null);
   const navigate = useNavigate();
   const { newsId: id } = useParams();
   const newsId = stringToNumber(id);
+  // if id no in the route is less than 100 so 2 digits max then it is an index as the category news in the navbar have no individual id other than the index number then we need to fetch the category
+
   const { data, isLoading, isError } = useGetPopularArticlesQuery();
 
   useEffect(() => {
     if (data) {
+      console.log("home news", data);
+
       const foundArticle = data.find((article) => article.id === newsId);
       setArticle(foundArticle || null);
     }
@@ -26,24 +31,13 @@ const SingleNewsPage = () => {
       ? media[0]["media-metadata"][2].url
       : "";
 
-  useEffect(() => {
-    console.log("all popular news in the single page:", data);
-    console.log("filtered article:", article);
-  }, [data, article]);
-
-  if (isLoading) {
-    return <p>Loading...</p>;
-  }
-
-  if (isError) {
-    return <p>Error loading articles.</p>;
-  }
-
   return (
     <div className="news-container">
       <button className="back-button" onClick={() => navigate(-1)}>
         Back
       </button>
+      {isLoading && <Loader />}
+      {isError && <div>Something went wrong fetching your data.</div>}
       <div className="news-card">
         <img src={imageSrc} alt="News" className="news-image" />
         <h1 className="news-title">{article?.title}</h1>

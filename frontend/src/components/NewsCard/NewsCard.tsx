@@ -5,6 +5,7 @@ import news from "../../assets/images/news.jpg";
 import formatDate from "../../util/formatDate";
 
 interface IProps {
+  type?: string;
   id?: string | number;
   imageSrc: string;
   title: string;
@@ -14,6 +15,7 @@ interface IProps {
 }
 
 const NewsCard = ({
+  type,
   id,
   imageSrc,
   title,
@@ -21,8 +23,10 @@ const NewsCard = ({
   byline,
   published_date,
 }: IProps) => {
+  const path = type ? `/${type}/${id}` : `/news/${id}`;
+
   return (
-    <Link to={`/news/${id}`}>
+    <Link to={path}>
       <div className="NewsCard">
         <div className="NewsCard__image">
           {imageSrc.length > 0 ? (
@@ -38,7 +42,7 @@ const NewsCard = ({
 
           <p className="author">{byline}</p>
 
-          <Link to={`/news/${id}`}>Read more</Link>
+          <Link to={path}>Read more</Link>
 
           <div className="posted-date">
             <p>{formatDate(published_date)}</p>

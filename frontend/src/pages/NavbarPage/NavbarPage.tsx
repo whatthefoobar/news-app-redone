@@ -12,7 +12,6 @@ const NavbarPage = () => {
   const location = useLocation();
   const pathName = location.pathname.split("/")[1];
   const { data, isLoading, isError } = useGetCategoryArticlesQuery(pathName);
-
   const [filteredData, setFilteredData] = useState<IFilteredCategoryArticle[]>([
     {
       title: "",
@@ -25,9 +24,6 @@ const NavbarPage = () => {
 
   useEffect(() => {
     if (data !== undefined && !isLoading) {
-      console.log(`${pathName} news:`, data);
-      console.log(Array.isArray(data.topStories));
-
       const filteredData = data.topStories.map((article: ICategoryArticle) => ({
         title: article.title || "",
         byline: article.byline || "",
@@ -63,6 +59,7 @@ const NavbarPage = () => {
           data &&
           currentItems.map((item, index) => (
             <NewsCard
+              type={pathName}
               id={index}
               key={index}
               title={item.title}

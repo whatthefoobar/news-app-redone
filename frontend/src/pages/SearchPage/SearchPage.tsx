@@ -1,10 +1,8 @@
-import { log } from "console";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 const Search = () => {
   const routeParams = useParams();
-  console.log("query from Serach", routeParams);
 
   const [searchResults, setSearchResults] = useState([]);
   const [isLoading, setIsLoading] = useState(false);

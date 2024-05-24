@@ -8,7 +8,6 @@ import { useGetPopularArticlesQuery } from "../../slices/apiSlice";
 import NewsCard from "../NewsCard/NewsCard";
 
 const PopularNews = () => {
-  // Define filteredPopularNews state
   const [filteredPopularNews, setFilteredPopularNews] = useState<
     IFilteredPopularNews[]
   >([
@@ -26,7 +25,6 @@ const PopularNews = () => {
 
   useEffect(() => {
     if (data) {
-      // console.log("data fetched from /api/popular", data);
       //filter the data obj to only the props we need
       const filteredNews = data.map((newsItem: IPopularNews, index: number) => {
         const media = newsItem.media || [];

@@ -27,8 +27,6 @@ const NavbarPage = () => {
 
   useEffect(() => {
     if (data !== undefined && !isLoading) {
-      console.log(`for ${category} news data from api`, data);
-
       const filteredData = data.topStories.map((article: ICategoryArticle) => ({
         title: article.title || "",
         byline: article.byline || "",

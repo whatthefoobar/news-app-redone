@@ -18,8 +18,6 @@ const SingleNewsPage = () => {
 
   useEffect(() => {
     if (data) {
-      console.log("home news", data);
-
       const foundArticle = data.find((article) => article.id === newsId);
       setArticle(foundArticle || null);
     }

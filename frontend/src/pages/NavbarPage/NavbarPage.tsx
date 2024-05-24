@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { useGetCategoryArticlesQuery } from "../../slices/apiSlice";
 import { capitalizeFirstLetter } from "../../util/capitalizeFirstLetter";
 import Loader from "../../components/Loader/Loader";
@@ -9,6 +9,9 @@ import Pagination from "../../components/Pagination/Pagination";
 import "./NavbarPage.css";
 
 const NavbarPage = () => {
+  const { category } = useParams();
+  // console.log("the news category for this page", category);
+
   const location = useLocation();
   const pathName = location.pathname.split("/")[1];
   const { data, isLoading, isError } = useGetCategoryArticlesQuery(pathName);
@@ -24,6 +27,8 @@ const NavbarPage = () => {
 
   useEffect(() => {
     if (data !== undefined && !isLoading) {
+      console.log(`for ${category} news data from api`, data);
+
       const filteredData = data.topStories.map((article: ICategoryArticle) => ({
         title: article.title || "",
         byline: article.byline || "",
@@ -55,12 +60,12 @@ const NavbarPage = () => {
         {isLoading && <Loader />}
         {isError && <div>Error fetching data from the API.</div>}
 
+        {/* how about i send the whole data object data.topStories and for each object in there run it to see which one matches the title coompletely */}
         {!isLoading &&
           data &&
           currentItems.map((item, index) => (
             <NewsCard
               type={pathName}
-              id={index}
               key={index}
               title={item.title}
               newsContent={item.abstract}

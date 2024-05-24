@@ -1,8 +1,10 @@
-import React from "react";
+import { useEffect } from "react";
 import "./NewsCard.css";
 import { Link } from "react-router-dom";
 import news from "../../assets/images/news.jpg";
 import formatDate from "../../util/formatDate";
+import { ICategoryArticles } from "../../types/api";
+import { findNewsObjectByTitle } from "../../util/findObjectByTitle";
 
 interface IProps {
   type?: string;
@@ -23,8 +25,10 @@ const NewsCard = ({
   byline,
   published_date,
 }: IProps) => {
-  const path = type ? `/${type}/${id}` : `/news/${id}`;
+  // because of pagination i cannot use index as an id as it it maximum 3 since i have max 4 items shown per page
+  //but i can take the whole object and check
 
+  const path = type ? `/${type}/${title}` : `/news/${id}`;
   return (
     <Link to={path}>
       <div className="NewsCard">

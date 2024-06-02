@@ -1,7 +1,6 @@
 import "./PopularNews.css";
 import { IFilteredPopularNews, IPopularNews } from "../../types/api";
 import { useEffect, useState } from "react";
-
 import Pagination from "../Pagination/Pagination";
 import Loader from "../Loader/Loader";
 import { useGetPopularArticlesQuery } from "../../slices/apiSlice";
@@ -53,7 +52,6 @@ const PopularNews = () => {
   }, [data]);
 
   const itemsPerPage = 4; // Number of items per page
-  // const [currentPage, setCurrentPage] = useState(1);
   const currentPage = page ? parseInt(page, 10) : 1;
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -63,7 +61,6 @@ const PopularNews = () => {
   );
 
   const paginate = (pageNumber: number) => {
-    // setCurrentPage(pageNumber);
     navigate(`/${pageNumber}`);
   };
 

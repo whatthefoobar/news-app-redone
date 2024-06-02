@@ -55,7 +55,9 @@ const Navbar = () => {
           <Link to="/business">Business</Link>
         </li> */}
       </ul>
-      <button className="navbar__contact">Contact us</button>
+      <button className="navbar__contact">
+        <Link to="/contact">Contact us</Link>
+      </button>
     </nav>
   );
 };

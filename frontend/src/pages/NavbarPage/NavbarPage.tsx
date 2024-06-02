@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useGetCategoryArticlesQuery } from "../../slices/apiSlice";
 import { capitalizeFirstLetter } from "../../util/capitalizeFirstLetter";
 import Loader from "../../components/Loader/Loader";
@@ -9,9 +9,6 @@ import Pagination from "../../components/Pagination/Pagination";
 import "./NavbarPage.css";
 
 const NavbarPage = () => {
-  const { category } = useParams();
-  // console.log("the news category for this page", category);
-
   const location = useLocation();
   const pathName = location.pathname.split("/")[1];
   const { data, isLoading, isError } = useGetCategoryArticlesQuery(pathName);
@@ -24,6 +21,9 @@ const NavbarPage = () => {
       published_date: "",
     },
   ]);
+
+  const { page } = useParams<{ page: string }>(); // Reading the page number from the URL
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (data !== undefined && !isLoading) {
@@ -40,7 +40,7 @@ const NavbarPage = () => {
 
   // Pagination logic
   const itemsPerPage = 4; // Number of items per page
-  const [currentPage, setCurrentPage] = useState(1);
+  const currentPage = page ? parseInt(page, 10) : 1;
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -48,7 +48,8 @@ const NavbarPage = () => {
   const totalPages = Math.ceil(filteredData.length / itemsPerPage);
 
   const paginate = (pageNumber: number) => {
-    setCurrentPage(pageNumber);
+    // setCurrentPage(pageNumber);
+    navigate(`/${pathName}/${pageNumber}`);
   };
 
   return (

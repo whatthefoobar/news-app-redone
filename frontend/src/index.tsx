@@ -15,6 +15,7 @@ import { Provider } from "react-redux";
 import store from "./store";
 import NavbarPage from "./pages/NavbarPage/NavbarPage";
 import SingleCategoryNewsPage from "./pages/SingleCategoryNewsPage/SingleCategoryNewsPage";
+import ContactPage from "./pages/ContactPage/ContactPage";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -24,7 +25,9 @@ const router = createBrowserRouter(
       <Route path="/search/:keyword" element={<Search />} />
       <Route path="/news/:newsId" element={<SingleNewsPage />} />
       <Route path="/:category" element={<NavbarPage />} />
+      <Route path="/:category/:page" element={<NavbarPage />} />
       <Route path="/:category/:newsId" element={<SingleCategoryNewsPage />} />
+      <Route path="/contact" element={<ContactPage />} />
       {/* <Route path="/science" element={<NavbarPage />} />
       <Route path="/science/:newsId" element={<SingleCategoryNewsPage />} />
       <Route path="/world" element={<NavbarPage />} />

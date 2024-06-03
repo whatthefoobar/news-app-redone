@@ -4,8 +4,8 @@ import "./ContactPage.css";
 const ContactPage = () => {
   return (
     <div className="contact-page">
-      <h1>Contact Us</h1>
       <form className="contact-form">
+        <h1>Contact Us</h1>
         <div className="form-field">
           <input type="text" id="fullName" placeholder="Full Name" required />
         </div>

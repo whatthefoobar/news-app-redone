@@ -19,4 +19,14 @@ Done:
 - created basic api routes in node to fetch my data from the public api
 - in the frontend using redux-toolkit to create an api slice and fetch data from my backend and manage global state should this app grow
 
-Preview:![p11](https://github.com/whatthefoobar/news-app-redone/assets/69626975/37c40a58-a727-499d-bd1d-f7cc4607a96e)
+![1](https://github.com/whatthefoobar/news-app-redone/assets/69626975/cd6f15ef-5b6c-4577-a0a8-44af90b87bc8)
+
+![2](https://github.com/whatthefoobar/news-app-redone/assets/69626975/2b157454-51aa-4ecd-92b5-e5583222ac5d)
+
+![3](https://github.com/whatthefoobar/news-app-redone/assets/69626975/ed490f24-7509-457a-9bae-b7b302228372)
+
+![4](https://github.com/whatthefoobar/news-app-redone/assets/69626975/741cb064-9f0c-42b8-b4a7-bf614b09fe09)
+
+
+
+

@@ -8,6 +8,8 @@ To do:
 
 Done:
 
+- made footer (not sure if I will use it or where yet)
+- clean up router to accomodate new routes without error.
 - create news category page listing a grid of paginated news articles based on said category, each categories are in the navbar as buttons
 - after first render I need to memorize the api response so I don't refetch it for any line of code I add.
 - create individual news article page

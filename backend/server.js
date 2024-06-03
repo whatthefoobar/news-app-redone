@@ -62,7 +62,6 @@ app.get("/articlesearch", async (req, res) => {
 
 app.get("/categories/:section", async (req, res) => {
   const { section } = req.params;
-  console.log(` ${section}`);
   console.log(`fetching data from api in my backend for ${section}!`);
   try {
     const response = await axios.get(

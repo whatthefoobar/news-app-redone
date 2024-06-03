@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useGetCategoryArticlesQuery } from "../../slices/apiSlice";
 import { capitalizeFirstLetter } from "../../util/capitalizeFirstLetter";
 import Loader from "../../components/Loader/Loader";

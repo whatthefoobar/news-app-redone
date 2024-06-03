@@ -4,6 +4,7 @@ In progress... Come back to see it done.
 
 To do:
 
+- add skeleton loading, to the cards
 - connect contact us form to backend and maybe send contact form to admin email(?)
 - create search news functionality
 

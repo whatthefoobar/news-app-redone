@@ -34,30 +34,28 @@ const Navbar = () => {
           <Link to="/">Home</Link>
         </li>
         <li>
-          <Link to="/politics">Politics</Link>
+          <Link to="/category/politics">Politics</Link>
         </li>
         <li>
-          <Link to="/science">Science</Link>
+          <Link to="/category/science">Science</Link>
         </li>
         <li>
-          <Link to="/world">World</Link>
+          <Link to="/category/world">World</Link>
         </li>
         <li>
-          <Link to="/arts">Arts</Link>
+          <Link to="/category/arts">Arts</Link>
         </li>
         <li>
-          <Link to="/books">Books</Link>
+          <Link to="/category/books">Books</Link>
         </li>
         <li>
-          <Link to="/movies">Movies</Link>
+          <Link to="/category/movies">Movies</Link>
         </li>
-        {/* <li>
-          <Link to="/business">Business</Link>
-        </li> */}
       </ul>
-      <button className="navbar__contact">
-        <Link to="/contact">Contact us</Link>
-      </button>
+
+      <Link to="/contact" className="navbar__contact">
+        Contact us
+      </Link>
     </nav>
   );
 };

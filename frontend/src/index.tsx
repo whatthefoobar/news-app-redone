@@ -21,24 +21,16 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
       <Route index={true} element={<Home />} />
-      <Route path="/:page" element={<Home />} />
-      <Route path="/search/:keyword" element={<Search />} />
-      <Route path="/news/:newsId" element={<SingleNewsPage />} />
-      <Route path="/:category" element={<NavbarPage />} />
-      <Route path="/:category/:page" element={<NavbarPage />} />
-      <Route path="/:category/:newsId" element={<SingleCategoryNewsPage />} />
-      <Route path="/contact" element={<ContactPage />} />
-      {/* <Route path="/science" element={<NavbarPage />} />
-      <Route path="/science/:newsId" element={<SingleCategoryNewsPage />} />
-      <Route path="/world" element={<NavbarPage />} />
-      <Route path="/world/:newsId" element={<SingleCategoryNewsPage />} />
-      <Route path="/arts" element={<NavbarPage />} />
-      <Route path="/arts/:newsId" element={<SingleCategoryNewsPage />} />
-      <Route path="/books" element={<NavbarPage />} />
-      <Route path="/books/:newsId" element={<SingleCategoryNewsPage />} />
-      <Route path="/movies" element={<NavbarPage />} />
-      <Route path="/movies/:newsId" element={<SingleCategoryNewsPage />} /> */}
-      {/* <Route path="/business" element={<NavbarPage />} /> */}
+      <Route path="page/:page" element={<Home />} />
+      <Route path="search/:keyword" element={<Search />} />
+      <Route path="news/:newsId" element={<SingleNewsPage />} />
+      <Route path="category/:category" element={<NavbarPage />} />
+      <Route path="category/:category/page/:page" element={<NavbarPage />} />
+      <Route
+        path="category/:category/news/:newsId"
+        element={<SingleCategoryNewsPage />}
+      />
+      <Route path="contact" element={<ContactPage />} />
     </Route>
   )
 );

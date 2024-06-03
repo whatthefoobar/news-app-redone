@@ -9,21 +9,17 @@ import Pagination from "../../components/Pagination/Pagination";
 import "./NavbarPage.css";
 
 const NavbarPage = () => {
-  const location = useLocation();
-  const pathName = location.pathname.split("/")[1];
-  const { data, isLoading, isError } = useGetCategoryArticlesQuery(pathName);
-  const [filteredData, setFilteredData] = useState<IFilteredCategoryArticle[]>([
-    {
-      title: "",
-      abstract: "",
-      byline: "",
-      imgUrl: "",
-      published_date: "",
-    },
-  ]);
-
-  const { page } = useParams<{ page: string }>(); // Reading the page number from the URL
+  const { category, page } = useParams<{ category: string; page: string }>(); // Read category and page from the URL
   const navigate = useNavigate();
+
+  // Provide a default value for category if it's undefined
+  const categoryName = category || "politics"; // Replace 'defaultCategory' with a valid default category
+
+  const { data, isLoading, isError } =
+    useGetCategoryArticlesQuery(categoryName);
+  const [filteredData, setFilteredData] = useState<IFilteredCategoryArticle[]>(
+    []
+  );
 
   useEffect(() => {
     if (data !== undefined && !isLoading) {
@@ -44,27 +40,27 @@ const NavbarPage = () => {
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = filteredData.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems = filteredData.slice(
+    indexOfFirstItem,
+    indexOfFirstItem + itemsPerPage
+  );
   const totalPages = Math.ceil(filteredData.length / itemsPerPage);
 
   const paginate = (pageNumber: number) => {
-    // setCurrentPage(pageNumber);
-    navigate(`/${pathName}/${pageNumber}`);
+    navigate(`/category/${categoryName}/page/${pageNumber}`);
   };
 
   return (
     <div className="navbarpage">
-      <h2>{capitalizeFirstLetter(pathName)} News</h2>
+      <h2>{capitalizeFirstLetter(categoryName)} News</h2>
       <div className="navbarpage__container">
         {isLoading && <Loader />}
         {isError && <div>Error fetching data from the API.</div>}
 
-        {/* how about i send the whole data object data.topStories and for each object in there run it to see which one matches the title coompletely */}
         {!isLoading &&
-          data &&
           currentItems.map((item, index) => (
             <NewsCard
-              type={pathName}
+              type={categoryName}
               key={index}
               title={item.title}
               newsContent={item.abstract}

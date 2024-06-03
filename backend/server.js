@@ -18,7 +18,7 @@ const apiKey = process.env.API_KEY;
 
 app.get("/api/popular", async (req, res) => {
   try {
-    console.log("fetching data from api in my backend!");
+    console.log("fetching home popular news data from api in my backend!");
     const response = await axios.get(
       `https://api.nytimes.com/svc/mostpopular/v2/shared/1/facebook.json?api-key=${apiKey}`
     );
@@ -62,7 +62,8 @@ app.get("/articlesearch", async (req, res) => {
 
 app.get("/categories/:section", async (req, res) => {
   const { section } = req.params;
-
+  console.log(` ${section}`);
+  console.log(`fetching data from api in my backend for ${section}!`);
   try {
     const response = await axios.get(
       `https://api.nytimes.com/svc/topstories/v2/${section}.json?api-key=${apiKey}`

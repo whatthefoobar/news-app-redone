@@ -17,7 +17,7 @@ h1 {
   width: 100%;
   max-width: 400px;
   background: transparent;
-  padding: 40px;
+  padding: 50px;
   border: 2px solid black;
 }
 
@@ -51,6 +51,7 @@ h1 {
 }
 
 textarea {
+  font-family: inherit;
   resize: none;
   height: 100px;
 }

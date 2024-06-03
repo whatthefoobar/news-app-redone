@@ -27,13 +27,15 @@ a {
   margin-top: 10px;
   font-size: 14px;
 }
-.NewsCard__content a {
+.NewsCard__content button {
+  border: none;
   text-decoration: none;
   color: #000;
   margin-top: 12px;
   display: inline-block;
   background-color: #e0af8e;
   padding: 8px 15px;
+  cursor: pointer;
 }
 .NewsCard .posted-date {
   position: absolute;

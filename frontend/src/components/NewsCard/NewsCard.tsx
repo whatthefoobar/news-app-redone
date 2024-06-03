@@ -1,10 +1,7 @@
-import { useEffect } from "react";
 import "./NewsCard.css";
 import { Link } from "react-router-dom";
 import news from "../../assets/images/news.jpg";
 import formatDate from "../../util/formatDate";
-import { ICategoryArticles } from "../../types/api";
-import { findNewsObjectByTitle } from "../../util/findObjectByTitle";
 
 interface IProps {
   type?: string;
@@ -27,8 +24,10 @@ const NewsCard = ({
 }: IProps) => {
   // because of pagination i cannot use index as an id as it it maximum 3 since i have max 4 items shown per page
   //but i can take the whole object and check
-
-  const path = type ? `/${type}/${title}` : `/news/${id}`;
+  // category/:category/news/:newsId
+  // /news/id is for home single news
+  // category/:category/news/:newsId is for individual category id
+  const path = type ? `/category/${type}/news/${title}` : `/news/${id}`;
   return (
     <Link to={path}>
       <div className="NewsCard">
@@ -46,7 +45,7 @@ const NewsCard = ({
 
           <p className="author">{byline}</p>
 
-          <Link to={path}>Read more</Link>
+          <button>Read more</button>
 
           <div className="posted-date">
             <p>{formatDate(published_date)}</p>

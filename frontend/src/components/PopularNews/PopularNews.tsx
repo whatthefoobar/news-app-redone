@@ -61,7 +61,7 @@ const PopularNews = () => {
   );
 
   const paginate = (pageNumber: number) => {
-    navigate(`/${pageNumber}`);
+    navigate(`/page/${pageNumber}`);
   };
 
   return (

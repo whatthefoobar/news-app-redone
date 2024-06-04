@@ -43,6 +43,7 @@ h1 {
   color: #000;
   opacity: 1;
   transition: opacity 0.3s;
+  background-color: transparent;
 }
 
 .form-field input:focus::placeholder,

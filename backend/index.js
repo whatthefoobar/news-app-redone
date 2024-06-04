@@ -9,10 +9,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: [
-      "http://localhost:3000",
-      "https://news-app-redone-client.vercel.app/",
-    ],
+    origin: ["https://news-app-redone-client.vercel.app"],
     methods: ["POST", "GET"],
     credentials: true,
   })

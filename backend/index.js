@@ -6,9 +6,12 @@ import filterNullProperties from "./util.js";
 dotenv.config();
 
 const app = express();
+
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: ["http://localhost:3000", "https:.vercel.app"],
+    methods: ["POST", "GET"],
+    credentials: true,
   })
 );
 

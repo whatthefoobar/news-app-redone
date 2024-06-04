@@ -16,6 +16,10 @@ const port = 5000;
 
 const apiKey = process.env.API_KEY;
 
+app.get("/", (req, res) => {
+  res.send("API is running....");
+});
+
 app.get("/api/popular", async (req, res) => {
   try {
     console.log("fetching home popular news data from api in my backend!");

@@ -1,12 +1,14 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import "./Navbar.css";
 
 const Navbar = () => {
-  // Initialize state to manage the menu's visibility
   const [isMenuVisible, setIsMenuVisible] = useState(false);
+  const location = useLocation();
 
-  // Function to toggle the menu's visibility
+  const { pathname } = location;
+  const splitLocation = pathname.split("/");
+
   const toggleMenu = () => {
     setIsMenuVisible(!isMenuVisible);
   };
@@ -30,32 +32,32 @@ const Navbar = () => {
         className={`navbar__menu ${isMenuVisible ? "active" : ""}`}
         id="navbarMenu"
       >
-        <li>
-          <Link to="/">Home</Link>
+        <li className={splitLocation[2] === "" ? "active" : ""}>
+          <NavLink to="/">Home</NavLink>
         </li>
-        <li>
-          <Link to="/category/politics">Politics</Link>
+        <li className={splitLocation[1] === "politics" ? "active" : ""}>
+          <NavLink to="/category/politics">Politics</NavLink>
         </li>
-        <li>
-          <Link to="/category/science">Science</Link>
+        <li className={splitLocation[1] === "science" ? "active" : ""}>
+          <NavLink to="/category/science">Science</NavLink>
         </li>
-        <li>
-          <Link to="/category/world">World</Link>
+        <li className={splitLocation[1] === "world" ? "active" : ""}>
+          <NavLink to="/category/world">World</NavLink>
         </li>
-        <li>
-          <Link to="/category/arts">Arts</Link>
+        <li className={splitLocation[1] === "arts" ? "active" : ""}>
+          <NavLink to="/category/arts">Arts</NavLink>
         </li>
-        <li>
-          <Link to="/category/books">Books</Link>
+        <li className={splitLocation[1] === "books" ? "active" : ""}>
+          <NavLink to="/category/books">Books</NavLink>
         </li>
-        <li>
-          <Link to="/category/movies">Movies</Link>
+        <li className={splitLocation[1] === "movies" ? "active" : ""}>
+          <NavLink to="/category/movies">Movies</NavLink>
         </li>
       </ul>
 
-      <Link to="/contact" className="navbar__contact">
+      <NavLink to="/contact" className="navbar__contact">
         Contact us
-      </Link>
+      </NavLink>
     </nav>
   );
 };

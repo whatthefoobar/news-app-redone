@@ -66,11 +66,13 @@
   z-index: -1; /* Place the line behind the text */
 }
 
-.navbar__menu li a:hover::before {
+.navbar__menu li a:hover::before,
+.navbar__menu li a.active::before {
   transform: scaleY(1); /* Expand the line to full height on hover */
 }
 
-.navbar__menu li a:hover {
+.navbar__menu li a:hover,
+.navbar__menu li a.active {
   color: #000;
 }
 

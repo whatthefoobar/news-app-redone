@@ -6,7 +6,8 @@ import {
 } from "../types/api";
 
 // const BASE_URL = "http://localhost:5000"; // Replace with your actual backend URL
-const BASE_URL = "https://news-app-redone.vercel.app";
+const BASE_URL =
+  "http://localhost:5000" || "https://news-app-redone.vercel.app";
 
 export const apiSlice = createApi({
   reducerPath: "api",

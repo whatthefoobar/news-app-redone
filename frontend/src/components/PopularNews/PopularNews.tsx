@@ -27,6 +27,8 @@ const PopularNews = () => {
 
   useEffect(() => {
     if (data) {
+      console.log("popular news data:", data);
+
       //filter the data obj to only the props we need
       const filteredNews = data.map((newsItem: IPopularNews, index: number) => {
         const media = newsItem.media || [];

@@ -36,7 +36,14 @@ const SingleCategoryNewsPage = () => {
           className="news-image"
         />
         <h1 className="news-title">{article?.title}</h1>
-        <p className="news-text">{article?.abstract}</p>
+        <p className="news-text">
+          {article?.abstract}{" "}
+          <span>
+            <a className="source" href={article?.url}>
+              Source
+            </a>
+          </span>
+        </p>
         <p className="author">{article?.byline}</p>
         <p>
           {article?.published_date ? formatDate(article.published_date) : ""}

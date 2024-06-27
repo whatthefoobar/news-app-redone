@@ -55,6 +55,11 @@
   margin: 20px;
 }
 
+.source {
+  font-weight: bold;
+  color: #444;
+}
+
 /* Responsive styling */
 @media (max-width: 600px) {
   .news-title {

@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { capitalizeFirstLetter } from "../../../util/capitalizeFirstLetter";
+import { ICategoryArticle, IFilteredCategoryArticle } from "../../../types/api";
+
+import "./NavbarPage.css";
 import { useGetCategoryArticlesQuery } from "../../slices/apiSlice";
-import { capitalizeFirstLetter } from "../../util/capitalizeFirstLetter";
 import Loader from "../../components/Loader/Loader";
-import { ICategoryArticle, IFilteredCategoryArticle } from "../../types/api";
 import NewsCard from "../../components/NewsCard/NewsCard";
 import Pagination from "../../components/Pagination/Pagination";
-import "./NavbarPage.css";
 
 const NavbarPage = () => {
   const { category, page } = useParams<{ category: string; page: string }>(); // Read category and page from the URL

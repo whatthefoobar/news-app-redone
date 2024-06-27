@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { useGetPopularArticlesQuery } from "../../slices/apiSlice";
 import "./SingleNewsPage.css";
 import { useNavigate, useParams } from "react-router-dom";
-import { stringToNumber } from "../../util/stringToNumber";
-import { IPopularNews } from "../../types/api";
-import formatDate from "../../util/formatDate";
+import { stringToNumber } from "../../../util/stringToNumber";
+import { IPopularNews } from "../../../types/api";
+import formatDate from "../../../util/formatDate";
+
+import { useGetPopularArticlesQuery } from "../../slices/apiSlice";
 import Loader from "../../components/Loader/Loader";
 
 const SingleNewsPage = () => {

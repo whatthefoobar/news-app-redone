@@ -8,14 +8,14 @@ import {
   Route,
   RouterProvider,
 } from "react-router-dom";
+import { Provider } from "react-redux";
 import Home from "./pages/Home/Home";
 import Search from "./pages/SearchPage/SearchPage";
 import SingleNewsPage from "./pages/SingleNewsPage/SingleNewsPage";
-import { Provider } from "react-redux";
-import store from "./store";
 import NavbarPage from "./pages/NavbarPage/NavbarPage";
 import SingleCategoryNewsPage from "./pages/SingleCategoryNewsPage/SingleCategoryNewsPage";
 import ContactPage from "./pages/ContactPage/ContactPage";
+import store from "./store";
 
 const router = createBrowserRouter(
   createRoutesFromElements(

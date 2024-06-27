@@ -1,12 +1,10 @@
-import { useEffect, useState } from "react";
-import { useGetCategoryArticlesQuery } from "../../slices/apiSlice";
 import "./SingleCategoryNewsPage.css";
 import { useNavigate, useParams } from "react-router-dom";
-import { stringToNumber } from "../../util/stringToNumber";
-import { ICategoryArticle } from "../../types/api";
-import formatDate from "../../util/formatDate";
+import { ICategoryArticle } from "../../../types/api";
+import formatDate from "../../../util/formatDate";
+import { findNewsObjectByTitle } from "../../../util/findObjectByTitle";
+import { useGetCategoryArticlesQuery } from "../../slices/apiSlice";
 import Loader from "../../components/Loader/Loader";
-import { findNewsObjectByTitle } from "../../util/findObjectByTitle";
 
 const SingleCategoryNewsPage = () => {
   const navigate = useNavigate();

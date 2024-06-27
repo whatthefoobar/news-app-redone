@@ -1,11 +1,11 @@
 import "./PopularNews.css";
-import { IFilteredPopularNews, IPopularNews } from "../../types/api";
 import { useEffect, useState } from "react";
 import Pagination from "../Pagination/Pagination";
 import Loader from "../Loader/Loader";
-import { useGetPopularArticlesQuery } from "../../slices/apiSlice";
 import NewsCard from "../NewsCard/NewsCard";
 import { useNavigate, useParams } from "react-router-dom";
+import { IFilteredPopularNews, IPopularNews } from "../../../types/api";
+import { useGetPopularArticlesQuery } from "../../slices/apiSlice";
 
 const PopularNews = () => {
   const [filteredPopularNews, setFilteredPopularNews] = useState<

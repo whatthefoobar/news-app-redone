@@ -1,7 +1,7 @@
 import "./NewsCard.css";
 import { Link } from "react-router-dom";
 import news from "../../assets/images/news.jpg";
-import formatDate from "../../util/formatDate";
+import formatDate from "../../../util/formatDate";
 
 interface IProps {
   type?: string;

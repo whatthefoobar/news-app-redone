@@ -3,10 +3,9 @@ import {
   IArticleSearchResponse,
   ICategoryArticles,
   IPopularNews,
-} from "../types/api";
+} from "../../types/api";
 
-// const BASE_URL = "http://localhost:5000"; // Replace with your actual backend URL
-const BASE_URL = "https://news-app-redone.vercel.app"; //"http://localhost:5000" ||
+const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 export const apiSlice = createApi({
   reducerPath: "api",
@@ -16,10 +15,10 @@ export const apiSlice = createApi({
       query: () => "/api/popular",
     }),
     searchArticles: builder.query<IArticleSearchResponse, string>({
-      query: (searchQuery) => `/articlesearch?q=${searchQuery}`,
+      query: (searchQuery) => `/api/articlesearch?q=${searchQuery}`,
     }),
     getCategoryArticles: builder.query<ICategoryArticles, string>({
-      query: (section) => `/categories/${section}`,
+      query: (section) => `/api/categories/${section}`,
     }),
   }),
 });

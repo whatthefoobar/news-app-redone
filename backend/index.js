@@ -10,8 +10,8 @@ const app = express();
 app.use(
   cors({
     origin: [
-      // "http://localhost:3000",
-      "https://news-app-redone-client.vercel.app",
+      "http://localhost:5173",
+      //"https://news-app-redone-client.vercel.app",
     ],
     methods: ["POST", "GET"],
     credentials: true,
@@ -22,7 +22,7 @@ const port = 5000;
 
 const apiKey = process.env.API_KEY;
 
-app.get("/", (req, res) => {
+app.get("/api", (req, res) => {
   res.send("API is running....");
 });
 
@@ -50,7 +50,7 @@ app.get("/api/popular", async (req, res) => {
 });
 
 //search articles by term
-app.get("/articlesearch", async (req, res) => {
+app.get("/api/articlesearch", async (req, res) => {
   try {
     const query = req.query.q;
 
@@ -70,7 +70,7 @@ app.get("/articlesearch", async (req, res) => {
   }
 });
 
-app.get("/categories/:section", async (req, res) => {
+app.get("/api/categories/:section", async (req, res) => {
   const { section } = req.params;
   console.log(`fetching data from api in my backend for ${section}!`);
   try {

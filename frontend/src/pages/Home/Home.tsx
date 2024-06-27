@@ -1,5 +1,4 @@
 import PopularNews from "../../components/PopularNews/PopularNews";
-
 import "./Home.css";
 
 const Home = () => {

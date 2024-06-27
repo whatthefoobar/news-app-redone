@@ -41,8 +41,7 @@ const NewsCard = ({
 
         <div className="NewsCard__content">
           <h4>{title}</h4>
-          <p>{newsContent}</p>
-
+          <p className="description">{newsContent}</p>
           <p className="author">{byline}</p>
 
           <button>Read more</button>

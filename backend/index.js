@@ -22,7 +22,7 @@ const port = 5000;
 
 const apiKey = process.env.API_KEY;
 
-app.get("/api", (req, res) => {
+app.get("/", (req, res) => {
   res.send("API is running....");
 });
 

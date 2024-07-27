@@ -1,11 +1,10 @@
 .header {
-  /* margin-top: 30px; */
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 1.6rem;
   font-weight: bold;
-  padding: 10px 0;
+  /* padding: 10px 0; */
   position: relative; /* Add this to make positioning the pseudo-elements easier */
   text-transform: uppercase;
 }

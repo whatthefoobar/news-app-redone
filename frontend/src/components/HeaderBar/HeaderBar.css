@@ -2,7 +2,7 @@
   color: #333; /* Text color for the entire navigation bar */
   display: flex;
   align-items: center;
-  padding: 10px 20px;
+  padding: 0px 20px;
 }
 
 .headerbar__searchbar {

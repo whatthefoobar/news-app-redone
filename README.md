@@ -7,7 +7,8 @@ To do:
 - add skeleton loading, to the cards
 - connect contact us form to backend and maybe send contact form to admin email(?)
 - create search news functionality
-
+- turn frontend to typescript
+- clean up code
 Done:
 
 - made footer (not sure if I will use it or where yet)

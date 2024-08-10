@@ -51,6 +51,7 @@ app.get("/api/popular", async (req, res) => {
 
 //search articles by term
 app.get("/api/articlesearch", async (req, res) => {
+  // test: /api/articlesearch?q=politics, endpoint works
   try {
     const query = req.query.q;
 

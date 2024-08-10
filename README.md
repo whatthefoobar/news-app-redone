@@ -9,6 +9,7 @@ To do:
 - create search news functionality
 - turn frontend to typescript
 - clean up code
+- add tests for the frontend, then maybe for the backend too
 Done:
 
 - made footer (not sure if I will use it or where yet)

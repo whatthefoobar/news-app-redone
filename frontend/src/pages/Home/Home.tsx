@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "./Home.css";
-import { IFilteredPopularNews } from "../../../types/api";
+import { IFilteredPopularNews, IPopularNews } from "../../../types/api";
 import { useGetPopularArticlesQuery } from "../../slices/apiSlice";
 import { useNavigate, useParams } from "react-router-dom";
 import Loader from "../../components/Loader/Loader";
@@ -25,7 +25,6 @@ const Home = () => {
   const { page } = useParams<{ page: string }>(); // Reading the page number from the URL
   const navigate = useNavigate();
 
-  // wtf do i have a useEffect here?
   useEffect(() => {
     if (data) {
       console.log("popular news data:", data);
@@ -68,9 +67,10 @@ const Home = () => {
   };
 
   return (
-    <div className="popularNews">
+    <div className="news">
+      {/* HOME PAGE */}
       <h2>Popular News</h2>
-      <div className="popularNews__container">
+      <div className="news__container">
         {isLoading && <Loader />}
         {isError && <div>Error fetching data from the API.</div>}
 

@@ -5,7 +5,7 @@ import Pagination from "../../components/Pagination/Pagination";
 import { capitalizeFirstLetter } from "../../../util/capitalizeFirstLetter";
 import NewsCard from "../../components/NewsCard/NewsCard";
 
-const Search = () => {
+const SearchPage = () => {
   const navigate = useNavigate();
   const routeParams = useParams();
   const keyword = routeParams.keyword || "";
@@ -33,9 +33,9 @@ const Search = () => {
   };
 
   return (
-    <div className="popularNews">
+    <div className="news">
       <h2>News about : {capitalizeFirstLetter(keyword)}</h2>
-      <div className="popularNews__container">
+      <div className="news__container">
         {isLoading && <Loader />}
         {isError && <div>Error fetching data from the API.</div>}
 
@@ -65,4 +65,4 @@ const Search = () => {
   );
 };
 
-export default Search;
+export default SearchPage;

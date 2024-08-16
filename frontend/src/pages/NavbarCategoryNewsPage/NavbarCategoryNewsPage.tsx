@@ -2,14 +2,14 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { capitalizeFirstLetter } from "../../../util/capitalizeFirstLetter";
 import { ICategoryArticle, IFilteredCategoryArticle } from "../../../types/api";
-
-import "./NavbarPage.css";
+import "./NavbarCategoryNewsPage.css";
 import { useGetCategoryArticlesQuery } from "../../slices/apiSlice";
 import Loader from "../../components/Loader/Loader";
 import NewsCard from "../../components/NewsCard/NewsCard";
 import Pagination from "../../components/Pagination/Pagination";
+import filterOutAdminSection from "../../../util/filterOutAdminNews";
 
-const NavbarPage = () => {
+const NavbarCategoryNewsPage = () => {
   const { category, page } = useParams<{ category: string; page: string }>(); // Read category and page from the URL
   const navigate = useNavigate();
 
@@ -18,13 +18,16 @@ const NavbarPage = () => {
 
   const { data, isLoading, isError } =
     useGetCategoryArticlesQuery(categoryName);
+
   const [filteredData, setFilteredData] = useState<IFilteredCategoryArticle[]>(
     []
   );
 
   useEffect(() => {
+    // there is an ampty ubject in the response under the section property "admin"
     if (data !== undefined && !isLoading) {
-      const filteredData = data.topStories.map((article: ICategoryArticle) => ({
+      const noAdminData = filterOutAdminSection(data.topStories);
+      const filteredData = noAdminData.map((article: ICategoryArticle) => ({
         title: article.title || "",
         byline: article.byline || "",
         abstract: article.abstract || "",
@@ -80,4 +83,4 @@ const NavbarPage = () => {
   );
 };
 
-export default NavbarPage;
+export default NavbarCategoryNewsPage;

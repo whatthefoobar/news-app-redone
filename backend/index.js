@@ -28,7 +28,7 @@ app.get("/", (req, res) => {
 
 app.get("/api/popular", async (req, res) => {
   try {
-    console.log("fetching home popular news data from api in my backend!");
+    // console.log("fetching home popular news data from api in my backend!");
     const response = await axios.get(
       `https://api.nytimes.com/svc/mostpopular/v2/shared/1/facebook.json?api-key=${apiKey}`
     );
@@ -63,7 +63,7 @@ app.get("/api/articlesearch", async (req, res) => {
       `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${query}&api-key=${apiKey}`
     );
     const data = await response.json();
-
+    // const articleSearchStories = data.response;
     res.json(data);
   } catch (error) {
     console.error("Error:", error);

@@ -1,48 +1,66 @@
-import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { useSearchArticlesQuery } from "../../slices/apiSlice";
+import Loader from "../../components/Loader/Loader";
+import Pagination from "../../components/Pagination/Pagination";
+import { capitalizeFirstLetter } from "../../../util/capitalizeFirstLetter";
+import NewsCard from "../../components/NewsCard/NewsCard";
 
 const Search = () => {
+  const navigate = useNavigate();
   const routeParams = useParams();
+  const keyword = routeParams.keyword || "";
+  const page = routeParams.page || "1";
+  console.log(keyword);
 
-  const [searchResults, setSearchResults] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const {
+    data: searchByKeywordNews,
+    isLoading,
+    isError,
+  } = useSearchArticlesQuery(keyword);
+  // can also use const { data, isLoading, isError } = useSearchArticlesQuery(keyword ?? "");
+  console.log(`search news by keyword : ${keyword}:`, searchByKeywordNews); // works
 
-  //   useEffect(() => {
-  //     // Define a function to fetch data from your backend
-  //     const fetchData = async () => {
-  //       try {
-  //         setIsLoading(true);
+  const itemsPerPage = 4; // Number of items per page
+  const currentPage = page ? parseInt(page, 10) : 1;
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = searchByKeywordNews
+    ? searchByKeywordNews.response.docs.slice(indexOfFirstItem, indexOfLastItem)
+    : [];
 
-  //         // Replace 'your-backend-url' with the actual URL of your backend
-  //         const response = await fetch(`/articlesearch?q=query`);
-  //         const data = await response.json();
-
-  //         setSearchResults(data); // Update state with the fetched data
-  //         setIsLoading(false);
-  //       } catch (error) {
-  //         console.error("Error:", error);
-  //         setIsLoading(false);
-  //       }
-  //     };
-
-  //     fetchData(); // Call the fetchData function when the component mounts
-  //     console.log("searchResults", searchResults);
-  //   }, []);
+  const paginate = (pageNumber: number) => {
+    navigate(`/search/${keyword}/page/${pageNumber}`);
+  };
 
   return (
-    <div>
-      <h1>News List</h1>
-      <p>Display news cards based on the search: </p>
-      {isLoading ? (
-        <p>Loading...</p>
-      ) : (
-        <ul>
-          {/* {searchResults?.response?.docs.map((article) => (
-            <li key={article._id}>{article.headline.main}</li>
-          ))} */}
-          Search....
-        </ul>
-      )}
+    <div className="popularNews">
+      <h2>News about : {capitalizeFirstLetter(keyword)}</h2>
+      <div className="popularNews__container">
+        {isLoading && <Loader />}
+        {isError && <div>Error fetching data from the API.</div>}
+
+        {!isLoading &&
+          searchByKeywordNews?.response.docs &&
+          currentItems.map((item) => (
+            <NewsCard
+              key={item._id}
+              id={item._id}
+              // fix this issue later
+              imageSrc={""}
+              title={item.headline.main}
+              newsContent={item.lead_paragraph}
+              byline={item.byline.original}
+              published_date={item.pub_date}
+            />
+          ))}
+      </div>
+      <Pagination
+        currentPage={currentPage}
+        totalPages={Math.ceil(
+          (searchByKeywordNews?.response.docs.length || 0) / itemsPerPage
+        )}
+        onPageChange={paginate}
+      />
     </div>
   );
 };

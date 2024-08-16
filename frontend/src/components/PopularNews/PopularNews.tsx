@@ -25,12 +25,13 @@ const PopularNews = () => {
   const { page } = useParams<{ page: string }>(); // Reading the page number from the URL
   const navigate = useNavigate();
 
+  // wtf do i have a useEffect here?
   useEffect(() => {
     if (data) {
       console.log("popular news data:", data);
 
       //filter the data obj to only the props we need
-      const filteredNews = data.map((newsItem: IPopularNews, index: number) => {
+      const filteredNews = data.map((newsItem: IPopularNews) => {
         const media = newsItem.media || [];
         const imageSrc =
           media[0] && media[0]["media-metadata"][2]

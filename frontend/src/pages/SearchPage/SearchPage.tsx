@@ -41,18 +41,24 @@ const SearchPage = () => {
 
         {!isLoading &&
           searchByKeywordNews?.response.docs &&
-          currentItems.map((item) => (
-            <NewsCard
-              key={item._id}
-              id={item._id}
-              // fix this issue later
-              imageSrc={""}
-              title={item.headline.main}
-              newsContent={item.lead_paragraph}
-              byline={item.byline.original}
-              published_date={item.pub_date}
-            />
-          ))}
+          currentItems.map((item) => {
+            // Conditionally get the image source
+            const imageSrc = item.multimedia?.length
+              ? `https://static01.nyt.com/${item.multimedia[0].url}`
+              : "";
+
+            return (
+              <NewsCard
+                key={item._id}
+                id={item._id}
+                imageSrc={imageSrc}
+                title={item.headline.main}
+                newsContent={item.lead_paragraph}
+                byline={item.byline.original}
+                published_date={item.pub_date}
+              />
+            );
+          })}
       </div>
       <Pagination
         currentPage={currentPage}

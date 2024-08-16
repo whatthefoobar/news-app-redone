@@ -66,34 +66,33 @@ const Home = () => {
   const paginate = (pageNumber: number) => {
     navigate(`/page/${pageNumber}`);
   };
-  return (
-    <div className="news">
-      <div className="popularNews">
-        <h2>Popular News</h2>
-        <div className="popularNews__container">
-          {isLoading && <Loader />}
-          {isError && <div>Error fetching data from the API.</div>}
 
-          {!isLoading &&
-            data &&
-            currentItems.map((item) => (
-              <NewsCard
-                key={item.id}
-                id={item.id}
-                imageSrc={item.imageSrc}
-                title={item.title}
-                newsContent={item.abstract}
-                byline={item.byline}
-                published_date={item.published_date}
-              />
-            ))}
-        </div>
-        <Pagination
-          currentPage={currentPage}
-          totalPages={Math.ceil(filteredPopularNews.length / itemsPerPage)}
-          onPageChange={paginate}
-        />
+  return (
+    <div className="popularNews">
+      <h2>Popular News</h2>
+      <div className="popularNews__container">
+        {isLoading && <Loader />}
+        {isError && <div>Error fetching data from the API.</div>}
+
+        {!isLoading &&
+          data &&
+          currentItems.map((item) => (
+            <NewsCard
+              key={item.id}
+              id={item.id}
+              imageSrc={item.imageSrc}
+              title={item.title}
+              newsContent={item.abstract}
+              byline={item.byline}
+              published_date={item.published_date}
+            />
+          ))}
       </div>
+      <Pagination
+        currentPage={currentPage}
+        totalPages={Math.ceil(filteredPopularNews.length / itemsPerPage)}
+        onPageChange={paginate}
+      />
     </div>
   );
 };

@@ -4,6 +4,8 @@ import news from "../../assets/images/news.jpg";
 import formatDate from "../../../util/formatDate";
 
 interface IProps {
+  search?: boolean;
+  keyword?: string;
   type?: string;
   id?: string | number;
   imageSrc: string;
@@ -14,6 +16,8 @@ interface IProps {
 }
 
 const NewsCard = ({
+  search,
+  keyword,
   type,
   id,
   imageSrc,
@@ -27,7 +31,12 @@ const NewsCard = ({
   // category/:category/news/:newsId
   // /news/id is for home single news
   // category/:category/news/:newsId is for individual category id
-  const path = type ? `/category/${type}/news/${title}` : `/news/${id}`;
+  const path = search
+    ? `/search/${keyword}/news/${id}`
+    : type
+    ? `/category/${type}/news/${title}`
+    : `/news/${id}`;
+
   return (
     <Link to={path}>
       <div className="NewsCard">

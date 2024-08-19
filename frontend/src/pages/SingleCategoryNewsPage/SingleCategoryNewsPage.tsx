@@ -9,7 +9,7 @@ import Loader from "../../components/Loader/Loader";
 const SingleCategoryNewsPage = () => {
   const navigate = useNavigate();
   const { category: routeCategory, newsId: title } = useParams();
-  // const newsId = stringToNumber(id);
+
   const category = routeCategory?.toString();
   // if id no in the route is less than 100 so 2 digits max then it is an index as the category news in the navbar have no individual id other than the index number then we need to fetch the category
   const { data, isLoading, isError } = useGetCategoryArticlesQuery(

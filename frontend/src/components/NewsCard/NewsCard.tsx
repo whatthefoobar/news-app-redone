@@ -32,7 +32,7 @@ const NewsCard = ({
   // /news/id is for home single news
   // category/:category/news/:newsId is for individual category id
   const path = search
-    ? `/search/${keyword}/news/${id}`
+    ? `/search/${keyword}/news/${title}`
     : type
     ? `/category/${type}/news/${title}`
     : `/news/${id}`;

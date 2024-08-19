@@ -54,14 +54,13 @@ const SearchPage = () => {
               ? `https://static01.nyt.com/${item.multimedia[0].url}`
               : "";
             // Extract UUID from item._id using the function
-            const articleId = extractUUIDFromNytUrl(item._id) || "";
+            //const articleId = extractUUIDFromNytUrl(item._id) || "";
 
             return (
               <NewsCard
+                key={item._id}
                 search={true}
                 keyword={keyword}
-                key={item._id}
-                id={articleId}
                 imageSrc={imageSrc}
                 title={item.headline.main}
                 newsContent={item.lead_paragraph}

@@ -52,74 +52,76 @@ export interface IArticleSearchResponse {
   status: string;
   copyright: string;
   response: {
-    docs: {
-      abstract: string;
-      web_url: string;
-      snippet: string;
-      lead_paragraph: string;
-      source: string;
-      multimedia: {
-        rank: number;
-        subtype: string;
-        caption: null | string;
-        credit: null | string;
-        type: string;
-        url: string;
-        height: number;
-        width: number;
-        legacy: {
-          [key: string]: string | number;
-        };
-        subType: string;
-        crop_name: string;
-      }[];
-      headline: {
-        main: string;
-        kicker: null | string;
-        content_kicker: null | string;
-        print_headline: null | string;
-        name: null | string;
-        seo: null | string;
-        sub: null | string;
-      };
-      keywords: {
-        name: string;
-        value: string;
-        rank: number;
-        major: string;
-      }[];
-      pub_date: string;
-      document_type: string;
-      news_desk: string;
-      section_name: string;
-      subsection_name: string;
-      byline: {
-        original: string;
-        person: {
-          firstname: string;
-          middlename: null | string;
-          lastname: string;
-          qualifier: null | string;
-          title: null | string;
-          role: string;
-          organization: string;
-          rank: number;
-        }[];
-        organization: null | string;
-      };
-      type_of_material: string;
-      _id: string;
-      word_count: number;
-      uri: string;
-      print_section?: string;
-      print_page?: string;
-    }[];
+    docs: ISingleArticleSearch[];
     meta: {
       hits: number;
       offset: number;
       time: number;
     };
   };
+}
+
+export interface ISingleArticleSearch {
+  abstract: string;
+  web_url: string;
+  snippet: string;
+  lead_paragraph: string;
+  source: string;
+  multimedia: {
+    rank: number;
+    subtype: string;
+    caption: null | string;
+    credit: null | string;
+    type: string;
+    url: string;
+    height: number;
+    width: number;
+    legacy: {
+      [key: string]: string | number;
+    };
+    subType: string;
+    crop_name: string;
+  }[];
+  headline: {
+    main: string;
+    kicker: null | string;
+    content_kicker: null | string;
+    print_headline: null | string;
+    name: null | string;
+    seo: null | string;
+    sub: null | string;
+  };
+  keywords: {
+    name: string;
+    value: string;
+    rank: number;
+    major: string;
+  }[];
+  pub_date: string;
+  document_type: string;
+  news_desk: string;
+  section_name: string;
+  subsection_name: string;
+  byline: {
+    original: string;
+    person: {
+      firstname: string;
+      middlename: null | string;
+      lastname: string;
+      qualifier: null | string;
+      title: null | string;
+      role: string;
+      organization: string;
+      rank: number;
+    }[];
+    organization: null | string;
+  };
+  type_of_material: string;
+  _id: string;
+  word_count: number;
+  uri: string;
+  print_section?: string;
+  print_page?: string;
 }
 
 // export interface ICategoryArticlesResponse {

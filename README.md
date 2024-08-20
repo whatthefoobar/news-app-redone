@@ -4,14 +4,14 @@ In progress... Come back to see it done.
 
 To do:
 
-- add skeleton loading, to the cards
 - connect contact us form to backend and maybe send contact form to admin email(?)
-- create search news functionality
-- turn frontend to typescript
-- clean up code
+- clean up code (ongoing)
 - add tests for the frontend, then maybe for the backend too
 Done:
 
+- create search news functionality 
+- turn frontend to typescript 
+- add skeleton loading, to the cards 
 - made footer (not sure if I will use it or where yet)
 - clean up router to accomodate new routes without error.
 - create news category page listing a grid of paginated news articles based on said category, each categories are in the navbar as buttons

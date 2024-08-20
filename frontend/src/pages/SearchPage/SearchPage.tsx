@@ -10,16 +10,12 @@ const SearchPage = () => {
   const routeParams = useParams();
   const keyword = routeParams.keyword || "";
   const page = routeParams.page || "1";
-  console.log(keyword);
 
   const {
     data: searchByKeywordNews,
     isLoading,
     isError,
   } = useSearchArticlesQuery(keyword);
-
-  // can also use const { data, isLoading, isError } = useSearchArticlesQuery(keyword ?? "");
-  console.log(`search news by keyword : ${keyword}:`, searchByKeywordNews); // works
 
   const itemsPerPage = 4; // Number of items per page
   const currentPage = page ? parseInt(page, 10) : 1;

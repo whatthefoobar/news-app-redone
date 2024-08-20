@@ -16,20 +16,15 @@ const SingleSearchNews = () => {
     isLoading,
     isError,
   } = useSearchArticlesQuery(keyword!);
-  // console.log(`search news by keyword : ${keyword}:`, searchByKeywordNews);
 
   let article: ISingleArticleSearch | undefined;
 
   if (searchByKeywordNews && newsId) {
-    // console.log(searchByKeywordNews, newsId);
-
     article = findSearchNewsObjectByTitle(
       searchByKeywordNews?.response.docs,
       newsId
     );
   }
-
-  console.log("single search article", article);
 
   const imageSrc = article?.multimedia?.length
     ? `https://static01.nyt.com/${article.multimedia[0].url}`

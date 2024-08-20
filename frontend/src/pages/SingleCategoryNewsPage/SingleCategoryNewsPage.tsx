@@ -19,8 +19,6 @@ const SingleCategoryNewsPage = () => {
 
   if (data && title) article = findNewsObjectByTitle(data, title);
 
-  // console.log("found category article", article);
-
   return (
     <div className="news-container">
       <button className="back-button" onClick={() => navigate(-1)}>

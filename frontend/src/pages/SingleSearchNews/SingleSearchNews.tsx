@@ -41,16 +41,14 @@ const SingleSearchNews = () => {
     ? `https://static01.nyt.com/${article.multimedia[0].url}`
     : "";
 
-  if (isLoading) return <Loader />;
-  if (isError) return <div>Something went wrong fetching your data.</div>;
-  if (!article) return <div>No article found.</div>;
-
   return (
     <div className="news-container">
       <button className="back-button" onClick={() => navigate(-1)}>
         Back
       </button>
-
+      {isLoading ?? <Loader />}
+      {isError ?? <div>Something went wrong fetching your data.</div>}
+      {!article ?? <div>No article found.</div>}
       <div className="news-card">
         <img src={imageSrc} alt="News" className="news-image" />
         <h1 className="news-title">{article?.headline.main}</h1>

@@ -4,7 +4,7 @@ import { ICategoryArticle } from "../../../types/api";
 import formatDate from "../../../util/formatDate";
 import { findNewsObjectByTitle } from "../../../util/findObjectByTitle";
 import { useGetCategoryArticlesQuery } from "../../slices/apiSlice";
-import Loader from "../../components/Loader/Loader";
+import SkeletonSinglePage from "../../components/SkeletonSinglePage/SkeletonSinglePage";
 
 const SingleCategoryNewsPage = () => {
   const navigate = useNavigate();
@@ -26,7 +26,8 @@ const SingleCategoryNewsPage = () => {
       <button className="back-button" onClick={() => navigate(-1)}>
         Back
       </button>
-      {isLoading && <Loader />}
+      {/* {isLoading && <Loader />} */}
+      {isLoading && <SkeletonSinglePage />}
       {isError && <div>Something went wrong fetching your data.</div>}
 
       <div className="news-card">

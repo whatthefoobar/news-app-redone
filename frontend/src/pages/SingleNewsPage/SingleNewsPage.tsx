@@ -4,9 +4,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import { stringToNumber } from "../../../util/stringToNumber";
 import { IPopularNews } from "../../../types/api";
 import formatDate from "../../../util/formatDate";
-
 import { useGetPopularArticlesQuery } from "../../slices/apiSlice";
-import Loader from "../../components/Loader/Loader";
+import SkeletonSinglePage from "../../components/SkeletonSinglePage/SkeletonSinglePage";
 
 const SingleNewsPage = () => {
   const [article, setArticle] = useState<IPopularNews | null>(null);
@@ -35,7 +34,8 @@ const SingleNewsPage = () => {
       <button className="back-button" onClick={() => navigate(-1)}>
         Back
       </button>
-      {isLoading && <Loader />}
+      {/* {isLoading && <Loader />} */}
+      {isLoading && <SkeletonSinglePage />}
       {isError && <div>Something went wrong fetching your data.</div>}
       <div className="news-card">
         <img src={imageSrc} alt="News" className="news-image" />

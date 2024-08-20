@@ -3,8 +3,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useSearchArticlesQuery } from "../../slices/apiSlice";
 import { findSearchNewsObjectByTitle } from "../../../util/findObjectByTitle";
 import { ISingleArticleSearch } from "../../../types/api";
-import Loader from "../../components/Loader/Loader";
 import formatDate from "../../../util/formatDate";
+import SkeletonSinglePage from "../../components/SkeletonSinglePage/SkeletonSinglePage";
 
 const SingleSearchNews = () => {
   const navigate = useNavigate();
@@ -40,7 +40,8 @@ const SingleSearchNews = () => {
       <button className="back-button" onClick={() => navigate(-1)}>
         Back
       </button>
-      {isLoading && <Loader />}
+      {/* {isLoading && <Loader />} */}
+      {isLoading && <SkeletonSinglePage />}
       {isError && <div>Something went wrong fetching your data.</div>}
       {!article && <div>No article found.</div>}
       <div className="news-card">

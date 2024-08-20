@@ -17,11 +17,16 @@ import SingleCategoryNewsPage from "./pages/SingleCategoryNewsPage/SingleCategor
 import ContactPage from "./pages/ContactPage/ContactPage";
 import store from "./store";
 import SingleSearchNews from "./pages/SingleSearchNews/SingleSearchNews";
+import SkeletonCard from "./components/SkeletonCard/SkeletonCard";
+import SkeletonSinglePage from "./components/SkeletonSinglePage/SkeletonSinglePage";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
       <Route index={true} element={<Home />} />
+      <Route path="skeletoncard" element={<SkeletonCard />} />
+      <Route path="skeletonpage" element={<SkeletonSinglePage />} />
+
       <Route path="page/:page" element={<Home />} />
       <Route path="search/:keyword" element={<SearchPage />} />
       <Route path="search/:keyword/page/:page" element={<SearchPage />} />

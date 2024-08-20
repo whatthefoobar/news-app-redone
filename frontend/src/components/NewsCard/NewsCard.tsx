@@ -27,10 +27,11 @@ const NewsCard = ({
   published_date,
 }: IProps) => {
   // because of pagination i cannot use index as an id as it it maximum 3 since i have max 4 items shown per page
-  //but i can take the whole object and check
+  // but i can take the whole object and check
   // category/:category/news/:newsId
   // /news/id is for home single news
   // category/:category/news/:newsId is for individual category id
+  // /search/${keyword}/news/${title} for individual news from search term
   const path = search
     ? `/search/${keyword}/news/${title}`
     : type

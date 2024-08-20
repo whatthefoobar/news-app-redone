@@ -7,6 +7,7 @@ To do:
 - connect contact us form to backend and maybe send contact form to admin email(?)
 - clean up code (ongoing)
 - add tests for the frontend, then maybe for the backend too
+  
 Done:
 
 - create search news functionality 

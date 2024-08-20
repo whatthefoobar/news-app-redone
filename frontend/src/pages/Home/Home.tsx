@@ -71,7 +71,6 @@ const Home = () => {
       {/* HOME PAGE */}
       <h2>Popular News</h2>
       <div className="news__container">
-        {/* {isLoading && <Loader />} */}
         {isLoading && (
           <>
             {Array.from({ length: itemsPerPage }).map((_, index) => (

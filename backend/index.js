@@ -73,7 +73,7 @@ app.get("/api/articlesearch", async (req, res) => {
 
 app.get("/api/categories/:section", async (req, res) => {
   const { section } = req.params;
-  console.log(`fetching data from api in my backend for ${section}!`);
+
   try {
     const response = await axios.get(
       `https://api.nytimes.com/svc/topstories/v2/${section}.json?api-key=${apiKey}`

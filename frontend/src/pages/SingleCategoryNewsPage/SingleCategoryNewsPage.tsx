@@ -26,7 +26,6 @@ const SingleCategoryNewsPage = () => {
       <button className="back-button" onClick={() => navigate(-1)}>
         Back
       </button>
-      {/* {isLoading && <Loader />} */}
       {isLoading && <SkeletonSinglePage />}
       {isError && <div>Something went wrong fetching your data.</div>}
 

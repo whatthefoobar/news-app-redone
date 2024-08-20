@@ -37,7 +37,6 @@ const SearchPage = () => {
     <div className="news">
       <h2>News about : {capitalizeFirstLetter(keyword)}</h2>
       <div className="news__container">
-        {/* {isLoading && <Loader />} */}
         {isLoading && (
           <>
             {Array.from({ length: itemsPerPage }).map((_, index) => (

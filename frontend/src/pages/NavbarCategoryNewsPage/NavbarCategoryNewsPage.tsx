@@ -4,10 +4,10 @@ import { capitalizeFirstLetter } from "../../../util/capitalizeFirstLetter";
 import { ICategoryArticle, IFilteredCategoryArticle } from "../../../types/api";
 import "./NavbarCategoryNewsPage.css";
 import { useGetCategoryArticlesQuery } from "../../slices/apiSlice";
-import Loader from "../../components/Loader/Loader";
 import NewsCard from "../../components/NewsCard/NewsCard";
 import Pagination from "../../components/Pagination/Pagination";
 import filterOutAdminSection from "../../../util/filterOutAdminNews";
+import SkeletonCard from "../../components/SkeletonCard/SkeletonCard";
 
 const NavbarCategoryNewsPage = () => {
   const { category, page } = useParams<{ category: string; page: string }>(); // Read category and page from the URL
@@ -58,7 +58,13 @@ const NavbarCategoryNewsPage = () => {
     <div className="navbarpage">
       <h2>{capitalizeFirstLetter(categoryName)} News</h2>
       <div className="navbarpage__container">
-        {isLoading && <Loader />}
+        {isLoading && (
+          <>
+            {Array.from({ length: itemsPerPage }).map((_, index) => (
+              <SkeletonCard key={index} />
+            ))}
+          </>
+        )}
         {isError && <div>Error fetching data from the API.</div>}
 
         {!isLoading &&

@@ -3,7 +3,6 @@ import "./Home.css";
 import { IFilteredPopularNews, IPopularNews } from "../../../types/api";
 import { useGetPopularArticlesQuery } from "../../slices/apiSlice";
 import { useNavigate, useParams } from "react-router-dom";
-import Loader from "../../components/Loader/Loader";
 import NewsCard from "../../components/NewsCard/NewsCard";
 import Pagination from "../../components/Pagination/Pagination";
 import SkeletonCard from "../../components/SkeletonCard/SkeletonCard";

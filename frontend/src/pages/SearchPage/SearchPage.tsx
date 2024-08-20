@@ -1,10 +1,9 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useSearchArticlesQuery } from "../../slices/apiSlice";
-import Loader from "../../components/Loader/Loader";
 import Pagination from "../../components/Pagination/Pagination";
 import { capitalizeFirstLetter } from "../../../util/capitalizeFirstLetter";
 import NewsCard from "../../components/NewsCard/NewsCard";
-import extractUUIDFromNytUrl from "../../../util/extractUUID";
+import SkeletonCard from "../../components/SkeletonCard/SkeletonCard";
 
 const SearchPage = () => {
   const navigate = useNavigate();
@@ -38,7 +37,14 @@ const SearchPage = () => {
     <div className="news">
       <h2>News about : {capitalizeFirstLetter(keyword)}</h2>
       <div className="news__container">
-        {isLoading && <Loader />}
+        {/* {isLoading && <Loader />} */}
+        {isLoading && (
+          <>
+            {Array.from({ length: itemsPerPage }).map((_, index) => (
+              <SkeletonCard key={index} />
+            ))}
+          </>
+        )}
         {isError && <div>Error fetching data from the API.</div>}
 
         {!isLoading &&

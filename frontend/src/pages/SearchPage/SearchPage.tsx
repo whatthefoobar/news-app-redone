@@ -21,7 +21,6 @@ const SearchPage = () => {
 
   // can also use const { data, isLoading, isError } = useSearchArticlesQuery(keyword ?? "");
   console.log(`search news by keyword : ${keyword}:`, searchByKeywordNews); // works
-  // extract news id
 
   const itemsPerPage = 4; // Number of items per page
   const currentPage = page ? parseInt(page, 10) : 1;
@@ -34,10 +33,6 @@ const SearchPage = () => {
   const paginate = (pageNumber: number) => {
     navigate(`/search/${keyword}/page/${pageNumber}`);
   };
-  const test = extractUUIDFromNytUrl(
-    "nyt://article/e4cdd98c-4163-509a-bbdf-37c30b0207f0"
-  );
-  console.log(test);
 
   return (
     <div className="news">
@@ -49,12 +44,9 @@ const SearchPage = () => {
         {!isLoading &&
           searchByKeywordNews?.response.docs &&
           currentItems.map((item) => {
-            // Conditionally get the image source
             const imageSrc = item.multimedia?.length
               ? `https://static01.nyt.com/${item.multimedia[0].url}`
               : "";
-            // Extract UUID from item._id using the function
-            //const articleId = extractUUIDFromNytUrl(item._id) || "";
 
             return (
               <NewsCard

@@ -10,33 +10,27 @@ const SingleSearchNews = () => {
   const navigate = useNavigate();
   const routeParams = useParams();
   const { keyword, newsId } = routeParams;
-  // const keyword = routeParams.keyword || "";
-  // const newsId = routeParams.newsId;
-  console.log(routeParams.newsId);
 
   const {
     data: searchByKeywordNews,
     isLoading,
     isError,
   } = useSearchArticlesQuery(keyword!);
-  console.log("searchByKeywordNews", searchByKeywordNews?.response.docs);
+  // console.log(`search news by keyword : ${keyword}:`, searchByKeywordNews);
 
   let article: ISingleArticleSearch | undefined;
 
-  if (searchByKeywordNews && newsId)
+  if (searchByKeywordNews && newsId) {
+    // console.log(searchByKeywordNews, newsId);
+
     article = findSearchNewsObjectByTitle(
       searchByKeywordNews?.response.docs,
       newsId
     );
-  // console.log("newsId", newsId);
-  // console.log(
-  //   findSearchNewsObjectByTitle(searchByKeywordNews?.response.docs, newsId)
-  // );
+  }
 
-  console.log("keyword article", article);
+  console.log("single search article", article);
 
-  // console.log("the single search article", article);
-  // Conditionally get the image source
   const imageSrc = article?.multimedia?.length
     ? `https://static01.nyt.com/${article.multimedia[0].url}`
     : "";

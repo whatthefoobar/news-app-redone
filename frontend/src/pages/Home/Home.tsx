@@ -6,6 +6,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import Loader from "../../components/Loader/Loader";
 import NewsCard from "../../components/NewsCard/NewsCard";
 import Pagination from "../../components/Pagination/Pagination";
+import SkeletonCard from "../../components/SkeletonCard/SkeletonCard";
 
 const Home = () => {
   const [filteredPopularNews, setFilteredPopularNews] = useState<
@@ -71,7 +72,14 @@ const Home = () => {
       {/* HOME PAGE */}
       <h2>Popular News</h2>
       <div className="news__container">
-        {isLoading && <Loader />}
+        {/* {isLoading && <Loader />} */}
+        {isLoading && (
+          <>
+            {Array.from({ length: itemsPerPage }).map((_, index) => (
+              <SkeletonCard key={index} />
+            ))}
+          </>
+        )}
         {isError && <div>Error fetching data from the API.</div>}
 
         {!isLoading &&

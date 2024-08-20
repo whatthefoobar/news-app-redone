@@ -1,0 +1,36 @@
+/* src/components/SkeletonCard/SkeletonCard.css */
+
+.skeleton-card {
+  width: 100%;
+  /* background-color: #f0f0f0; */
+  background-color: transparent;
+  border-radius: 4px;
+  padding: 16px;
+  box-sizing: border-box;
+  margin-bottom: 16px;
+}
+
+.skeleton-image {
+  width: 100%;
+  height: 180px;
+  background-color: #7e7e7e;
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+
+.skeleton-title {
+  width: 80%;
+  height: 20px;
+  background-color: #7e7e7e;
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+
+.skeleton-byline,
+.skeleton-date {
+  width: 60%;
+  height: 15px;
+  background-color: #7e7e7e;
+  border-radius: 4px;
+  margin-bottom: 4px;
+}

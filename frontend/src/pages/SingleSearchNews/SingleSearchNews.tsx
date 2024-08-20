@@ -46,9 +46,9 @@ const SingleSearchNews = () => {
       <button className="back-button" onClick={() => navigate(-1)}>
         Back
       </button>
-      {isLoading ?? <Loader />}
-      {isError ?? <div>Something went wrong fetching your data.</div>}
-      {!article ?? <div>No article found.</div>}
+      {isLoading && <Loader />}
+      {isError && <div>Something went wrong fetching your data.</div>}
+      {!article && <div>No article found.</div>}
       <div className="news-card">
         <img src={imageSrc} alt="News" className="news-image" />
         <h1 className="news-title">{article?.headline.main}</h1>

@@ -4,6 +4,7 @@ import { useSearchArticlesQuery } from "../../slices/apiSlice";
 import { findSearchNewsObjectByTitle } from "../../../util/findObjectByTitle";
 import { ISingleArticleSearch } from "../../../types/api";
 import formatDate from "../../../util/formatDate";
+// import news from "../../assets/assets/images/news.jpg";
 import SkeletonSinglePage from "../../components/SkeletonSinglePage/SkeletonSinglePage";
 
 const SingleSearchNews = () => {
@@ -25,10 +26,12 @@ const SingleSearchNews = () => {
       newsId
     );
   }
+  console.log("single search article", article);
 
-  const imageSrc = article?.multimedia?.length
-    ? `https://static01.nyt.com/${article.multimedia[0].url}`
-    : "";
+  const imageSrc =
+    article && article.multimedia.length
+      ? `https://static01.nyt.com/${article.multimedia[0].url}`
+      : "";
 
   return (
     <div className="news-container">
@@ -39,20 +42,27 @@ const SingleSearchNews = () => {
       {isLoading && <SkeletonSinglePage />}
       {isError && <div>Something went wrong fetching your data.</div>}
       {!article && <div>No article found.</div>}
-      <div className="news-card">
-        <img src={imageSrc} alt="News" className="news-image" />
-        <h1 className="news-title">{article?.headline.main}</h1>
-        <p className="news-text">
-          {article?.abstract}{" "}
-          <span>
-            <a className="source" href={article?.web_url}>
-              Source
-            </a>
-          </span>
-        </p>
-        <p className="author">{article?.byline.original}</p>
-        <p>{article?.pub_date ? formatDate(article.pub_date) : ""}</p>
-      </div>
+      {article && !isLoading && (
+        <div className="news-card">
+          {/* {article && imageSrc.length > 0 ? (
+          <img src={imageSrc} alt="news" className="news-image" />
+        ) : (
+          <img src={news} alt="news" />
+        )} */}
+          <img src={imageSrc} alt="News" className="news-image" />
+          <h1 className="news-title">{article?.headline.main}</h1>
+          <p className="news-text">
+            {article?.abstract}{" "}
+            <span>
+              <a className="source" href={article?.web_url}>
+                Source
+              </a>
+            </span>
+          </p>
+          <p className="author">{article?.byline.original}</p>
+          <p>{article?.pub_date ? formatDate(article.pub_date) : ""}</p>
+        </div>
+      )}
     </div>
   );
 };

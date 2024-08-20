@@ -4,6 +4,7 @@ import { ICategoryArticle } from "../../../types/api";
 import formatDate from "../../../util/formatDate";
 import { findNewsObjectByTitle } from "../../../util/findObjectByTitle";
 import { useGetCategoryArticlesQuery } from "../../slices/apiSlice";
+import news from "../../assets/assets/images/news.jpg";
 import SkeletonSinglePage from "../../components/SkeletonSinglePage/SkeletonSinglePage";
 
 const SingleCategoryNewsPage = () => {
@@ -18,6 +19,7 @@ const SingleCategoryNewsPage = () => {
   let article: ICategoryArticle | undefined;
 
   if (data && title) article = findNewsObjectByTitle(data, title);
+  console.log("single category news", article);
 
   return (
     <div className="news-container">
@@ -28,11 +30,16 @@ const SingleCategoryNewsPage = () => {
       {isError && <div>Something went wrong fetching your data.</div>}
 
       <div className="news-card">
-        <img
-          src={article?.multimedia[0].url}
-          alt="News"
-          className="news-image"
-        />
+        {article && article.multimedia.length > 0 ? (
+          <img
+            src={article?.multimedia[0].url}
+            alt="News"
+            className="news-image"
+          />
+        ) : (
+          <img src={news} alt="news" />
+        )}
+
         <h1 className="news-title">{article?.title}</h1>
         <p className="news-text">
           {article?.abstract}{" "}

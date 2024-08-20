@@ -5,6 +5,7 @@ import { stringToNumber } from "../../../util/stringToNumber";
 import { IPopularNews } from "../../../types/api";
 import formatDate from "../../../util/formatDate";
 import { useGetPopularArticlesQuery } from "../../slices/apiSlice";
+import news from "../../assets/assets/images/news.jpg";
 import SkeletonSinglePage from "../../components/SkeletonSinglePage/SkeletonSinglePage";
 
 const SingleNewsPage = () => {
@@ -37,7 +38,11 @@ const SingleNewsPage = () => {
       {isLoading && <SkeletonSinglePage />}
       {isError && <div>Something went wrong fetching your data.</div>}
       <div className="news-card">
-        <img src={imageSrc} alt="News" className="news-image" />
+        {imageSrc.length > 0 ? (
+          <img src={imageSrc} alt="news" className="news-image" />
+        ) : (
+          <img src={news} alt="news" />
+        )}
         <h1 className="news-title">{article?.title}</h1>
         <p className="news-text">
           {article?.abstract}

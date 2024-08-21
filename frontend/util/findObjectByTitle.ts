@@ -1,5 +1,4 @@
 import { ICategoryArticle, ISingleArticleSearch } from "./../types/api";
-import { ICategoryArticles } from "../types/api";
 
 export const replaceHyphensWithSpaces = (input: string): string => {
   return input.replace(/-/g, " ");
@@ -10,10 +9,10 @@ export const removeQuestionMark = (input: string): string => {
 };
 
 export const findNewsObjectByTitle = (
-  data: ICategoryArticles,
+  data: ICategoryArticle[],
   title: string
 ) => {
-  return data.topStories.find((item: ICategoryArticle) => item.title === title);
+  return data.find((item: ICategoryArticle) => item.title === title);
 };
 
 export const findSearchNewsObjectByTitle = (
@@ -36,5 +35,16 @@ export const normalizeAndCleanHeadlines = (
         .replace(/’/g, "'") // Normalize apostrophes
         .replace(/\?/g, ""), // Remove question marks
     },
+  }));
+};
+
+export const normalizeAndCleanTitlesCategoryNews = (
+  data: ICategoryArticle[]
+): ICategoryArticle[] => {
+  return data.map((item) => ({
+    ...item,
+    title: item.title
+      .replace(/’/g, "'") // Normalize apostrophes
+      .replace(/\?/g, ""), // Remove question marks
   }));
 };

@@ -39,7 +39,7 @@ const NewsCard = ({
   const path = search
     ? `/search/${keyword}/news/${slugifiedTile}`
     : type
-    ? `/category/${type}/news/${title}`
+    ? `/category/${type}/news/${slugifiedTile}`
     : `/news/${id}`;
 
   return (

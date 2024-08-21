@@ -24,11 +24,14 @@ const SingleSearchNews = () => {
   let article: ISingleArticleSearch | undefined;
 
   if (searchByKeywordNews && newsId) {
-    const withoutQuestion = normalizeAndCleanHeadlines(
+    const normalizedSearchByKeywordNews = normalizeAndCleanHeadlines(
       searchByKeywordNews.response.docs
     );
     const updatedId = replaceHyphensWithSpaces(newsId);
-    article = findSearchNewsObjectByTitle(withoutQuestion, updatedId);
+    article = findSearchNewsObjectByTitle(
+      normalizedSearchByKeywordNews,
+      updatedId
+    );
   }
 
   const imageSrc =

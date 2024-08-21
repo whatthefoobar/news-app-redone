@@ -2,7 +2,11 @@ import "./SingleCategoryNewsPage.css";
 import { useNavigate, useParams } from "react-router-dom";
 import { ICategoryArticle } from "../../../types/api";
 import formatDate from "../../../util/formatDate";
-import { findNewsObjectByTitle } from "../../../util/findObjectByTitle";
+import {
+  findNewsObjectByTitle,
+  normalizeAndCleanTitlesCategoryNews,
+  replaceHyphensWithSpaces,
+} from "../../../util/findObjectByTitle";
 import { useGetCategoryArticlesQuery } from "../../slices/apiSlice";
 import news from "../../assets/assets/images/news.jpg";
 import SkeletonSinglePage from "../../components/SkeletonSinglePage/SkeletonSinglePage";
@@ -18,8 +22,13 @@ const SingleCategoryNewsPage = () => {
   );
   let article: ICategoryArticle | undefined;
 
-  if (data && title) article = findNewsObjectByTitle(data, title);
-  console.log("single category news", article);
+  if (data && title) {
+    const updatedTitle = replaceHyphensWithSpaces(title);
+    const normalizedCategoryNewsData = normalizeAndCleanTitlesCategoryNews(
+      data.topStories
+    );
+    article = findNewsObjectByTitle(normalizedCategoryNewsData, updatedTitle);
+  }
 
   return (
     <div className="news-container">
@@ -28,32 +37,33 @@ const SingleCategoryNewsPage = () => {
       </button>
       {isLoading && <SkeletonSinglePage />}
       {isError && <div>Something went wrong fetching your data.</div>}
+      {article && (
+        <div className="news-card">
+          {article.multimedia.length > 0 ? (
+            <img
+              src={article?.multimedia[0].url}
+              alt="News"
+              className="news-image"
+            />
+          ) : (
+            <img src={news} alt="news" />
+          )}
 
-      <div className="news-card">
-        {article && article.multimedia.length > 0 ? (
-          <img
-            src={article?.multimedia[0].url}
-            alt="News"
-            className="news-image"
-          />
-        ) : (
-          <img src={news} alt="news" />
-        )}
-
-        <h1 className="news-title">{article?.title}</h1>
-        <p className="news-text">
-          {article?.abstract}{" "}
-          <span>
-            <a className="source" href={article?.url}>
-              Source
-            </a>
-          </span>
-        </p>
-        <p className="author">{article?.byline}</p>
-        <p>
-          {article?.published_date ? formatDate(article.published_date) : ""}
-        </p>
-      </div>
+          <h1 className="news-title">{article?.title}</h1>
+          <p className="news-text">
+            {article?.abstract}{" "}
+            <span>
+              <a className="source" href={article?.url}>
+                Source
+              </a>
+            </span>
+          </p>
+          <p className="author">{article?.byline}</p>
+          <p>
+            {article?.published_date ? formatDate(article.published_date) : ""}
+          </p>
+        </div>
+      )}
     </div>
   );
 };

@@ -1,7 +1,10 @@
-import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useSearchArticlesQuery } from "../../slices/apiSlice";
-import { findSearchNewsObjectByTitle } from "../../../util/findObjectByTitle";
+import {
+  findSearchNewsObjectByTitle,
+  normalizeAndCleanHeadlines,
+  replaceHyphensWithSpaces,
+} from "../../../util/findObjectByTitle";
 import { ISingleArticleSearch } from "../../../types/api";
 import formatDate from "../../../util/formatDate";
 // import news from "../../assets/assets/images/news.jpg";
@@ -21,12 +24,12 @@ const SingleSearchNews = () => {
   let article: ISingleArticleSearch | undefined;
 
   if (searchByKeywordNews && newsId) {
-    article = findSearchNewsObjectByTitle(
-      searchByKeywordNews?.response.docs,
-      newsId
+    const withoutQuestion = normalizeAndCleanHeadlines(
+      searchByKeywordNews.response.docs
     );
+    const updatedId = replaceHyphensWithSpaces(newsId);
+    article = findSearchNewsObjectByTitle(withoutQuestion, updatedId);
   }
-  console.log("single search article", article);
 
   const imageSrc =
     article && article.multimedia.length
@@ -41,7 +44,7 @@ const SingleSearchNews = () => {
       {/* {isLoading && <Loader />} */}
       {isLoading && <SkeletonSinglePage />}
       {isError && <div>Something went wrong fetching your data.</div>}
-      {!article && <div>No article found.</div>}
+      {!isLoading && !article && <div>No article found.</div>}
       {article && !isLoading && (
         <div className="news-card">
           {/* {article && imageSrc.length > 0 ? (
@@ -50,11 +53,11 @@ const SingleSearchNews = () => {
           <img src={news} alt="news" />
         )} */}
           <img src={imageSrc} alt="News" className="news-image" />
-          <h1 className="news-title">{article?.headline.main}</h1>
+          <h1 className="news-title">{article.headline.main}</h1>
           <p className="news-text">
             {article?.abstract}{" "}
             <span>
-              <a className="source" href={article?.web_url}>
+              <a className="source" href={article.web_url}>
                 Source
               </a>
             </span>

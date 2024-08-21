@@ -2,6 +2,7 @@ import "./NewsCard.css";
 import { Link } from "react-router-dom";
 import news from "../../assets/images/news.jpg";
 import formatDate from "../../../util/formatDate";
+import slugify from "slugify";
 
 interface IProps {
   search?: boolean;
@@ -32,8 +33,11 @@ const NewsCard = ({
   // /news/id is for home single news
   // category/:category/news/:newsId is for individual category id
   // /search/${keyword}/news/${title} for individual news from search term
+  //here somehow i need to put the slugify title in the path
+  const slugifiedTile = slugify(title);
+
   const path = search
-    ? `/search/${keyword}/news/${title}`
+    ? `/search/${keyword}/news/${slugifiedTile}`
     : type
     ? `/category/${type}/news/${title}`
     : `/news/${id}`;

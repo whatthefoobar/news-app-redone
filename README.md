@@ -4,7 +4,6 @@ In progress... Come back to see it done.
 
 To do:
 
-- connect contact us form to backend and maybe send contact form to admin email(?)
 - clean up code (ongoing)
 - add tests for the frontend, then maybe for the backend too
   
@@ -21,6 +20,7 @@ Done:
 - created Node backend and hid api keys,
 - created basic api routes in node to fetch my data from the public api
 - in the frontend using redux-toolkit to create an api slice and fetch data from my backend and manage global state should this app grow
+   connect contact us form to backend and maybe send contact form to admin email(?)
 
 ![1](https://github.com/whatthefoobar/news-app-redone/assets/69626975/cd6f15ef-5b6c-4577-a0a8-44af90b87bc8)
 

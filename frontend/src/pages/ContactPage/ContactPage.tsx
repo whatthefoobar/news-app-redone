@@ -9,9 +9,9 @@ const ContactPage = () => {
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log("Full Name:", fullName);
-    console.log("Email:", email);
-    console.log("Message:", message);
+    // console.log("Full Name:", fullName);
+    // console.log("Email:", email);
+    // console.log("Message:", message);
 
     // Send data to the backend
     try {

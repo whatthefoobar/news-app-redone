@@ -15,13 +15,16 @@ const ContactPage = () => {
 
     // Send data to the backend
     try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ fullName, email, message }),
-      });
+      const response = await fetch(
+        "https://news-app-redone.vercel.app/api/contact",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ fullName, email, message }),
+        }
+      );
 
       if (response.ok) {
         setIsSubmitted(true);

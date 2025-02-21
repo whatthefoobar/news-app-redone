@@ -2,16 +2,19 @@ import express from "express";
 import axios from "axios";
 import dotenv from "dotenv";
 import cors from "cors";
+import nodemailer from "nodemailer";
 import filterNullProperties from "./util.js";
 dotenv.config();
 
 const app = express();
 
+app.use(express.json());
+
 app.use(
   cors({
     origin: [
       "http://localhost:5173",
-      "https://news-app-redone-client.vercel.app",
+      // "https://news-app-redone-client.vercel.app",
     ],
     methods: ["POST", "GET"],
     credentials: true,
@@ -21,6 +24,17 @@ app.use(
 const port = 5000;
 
 const apiKey = process.env.API_KEY;
+
+// Create a transporter for Nodemailer
+const transporter = nodemailer.createTransport({
+  host: "smtp.gmail.com",
+  port: 465,
+  secure: true,
+  auth: {
+    user: process.env.NODEMAILER_USER,
+    pass: process.env.NODEMAILER_PASSWORD,
+  },
+});
 
 app.get("/", (req, res) => {
   res.send("API is running....");
@@ -82,6 +96,30 @@ app.get("/api/categories/:section", async (req, res) => {
     res.json({ topStories });
   } catch (error) {
     res.status(500).json({ error: "Error fetching top stories" });
+  }
+});
+
+// New endpoint to handle contact form submission
+app.post("/api/contact", async (req, res) => {
+  const { fullName, email, message } = req.body;
+
+  console.log(fullName, email, message);
+
+  // Compose the email
+  const mailOptions = {
+    from: email, // Sender address
+    to: process.env.NODEMAILER_USER, // Admin email address
+    subject: `News-app contact us from  from ${fullName}`,
+    text: `You have received a new message from ${fullName} (${email}):\n\n${message}`,
+  };
+
+  try {
+    // Send email using Nodemailer
+    await transporter.sendMail(mailOptions);
+    res.status(200).json({ message: "Message sent successfully!" });
+  } catch (error) {
+    console.error("Error sending email:", error);
+    res.status(500).json({ error: "Internal server error" });
   }
 });
 

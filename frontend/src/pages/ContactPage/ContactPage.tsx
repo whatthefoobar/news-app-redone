@@ -7,13 +7,32 @@ const ContactPage = () => {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     console.log("Full Name:", fullName);
     console.log("Email:", email);
     console.log("Message:", message);
-    setIsSubmitted(true);
+
+    // Send data to the backend
+    try {
+      const response = await fetch("http://localhost:5000/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ fullName, email, message }),
+      });
+
+      if (response.ok) {
+        setIsSubmitted(true);
+      } else {
+        console.error("Error sending message.");
+      }
+    } catch (error) {
+      console.error("Error sending message:", error);
+    }
   };
+
   return (
     <div className="contact-page">
       {isSubmitted ? (

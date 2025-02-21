@@ -15,7 +15,6 @@ app.use(
     origin: [
       "http://localhost:5173",
       "https://news-app-redone-client.vercel.app",
-      "https://news-app-redone.vercel.app/",
     ],
     methods: ["POST", "GET"],
     credentials: true,
